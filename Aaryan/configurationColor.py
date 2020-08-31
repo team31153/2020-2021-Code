@@ -59,7 +59,7 @@ def config():
     f.write(str(whiteValueBack)+'\n')
     f.write(str(whiteValueFront)+'\n')
     f.close()
-config()
+
         
                 
         

@@ -12,7 +12,7 @@ blackValueFront = -1
 whiteValueBack = -1
 whiteValueFront = -1
 
-def stopOnWBFront(whiteValue, blackValue):
+def stopOnWBFront():
     global blackValueBack
     global blackValueFront
     global whiteValueBack
