@@ -68,13 +68,5 @@ def colorConfig():
 
     
     print("black has reached")
-    #Write values to file
-    f = open("ConfiguredColor.txt", "w")
-    f.write(str(frontColorSensorWhite)+'\n')
-    f.write(str(backColorSensorWhite)+'\n')
-    f.write(str(sideColorSensorWhite)+'\n')
-    f.write(str(frontColorSensorBlack)+'\n')
-    f.write(str(backColorSensorBlack)+'\n')
-    f.write(str(sideColorSensorBlack)+'\n')
-    f.close()
+    
 
