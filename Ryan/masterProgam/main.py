@@ -12,7 +12,7 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 # Click "Open user guide" on the EV3 extension tab for more information.
 #Calls functions from programs
 from TurnGradualGyro import turnGradualGyro
-from ConfigurationColor import colorConfig
+from ConfigurationColorMK2 import colorConfigMK2
 from StopOnBlackMK3 import stopOnBlackF
 from StopOnBlackMK3 import stopOnBlackB
 from StopOnBlackMK3 import stopOnBlackS
@@ -44,7 +44,7 @@ whichProgram = input("Which program do you want to run? ")
 whichProgram = int(whichProgram)
 
 if whichProgram == 1:
-    colorConfig()
+    colorConfigMK2()
 elif whichProgram == 2:
     stopOnBlackF()
 elif whichProgram == 3:
