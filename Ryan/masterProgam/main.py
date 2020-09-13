@@ -36,34 +36,38 @@ robot = DriveBase(cMotor, dMotor, 56, 60)
 p1FSensor = ColorSensor(Port.S1)
 p2BSensor = ColorSensor(Port.S2)
 p3SSensor = ColorSensor(Port.S3)
-
+p4FSensor = GyroSensor(Port.S4)
+stop = 0
 # Write your program here.
 #Calls functions imported from programs
+while stop == 0:
 
-whichProgram = input("Which program do you want to run? ")
-whichProgram = int(whichProgram)
+    whichProgram = input("Which program do you want to run? ")
+    whichProgram = whichProgram
 
-if whichProgram == 1:
-    colorConfigMK2()
-elif whichProgram == 2:
-    stopOnBlackF()
-elif whichProgram == 3:
-    stopOnBlackB()
-elif whichProgram == 4:
-    stopOnBlackS()
-elif whichProgram == 5:
-    stopOnWhiteF()
-elif whichProgram == 6:
-    stopOnWhiteB()
-elif whichProgram == 7:
-    stopOnWhiteS()
-elif whichProgram == 8:
-    turnGradualGyro()
-elif whichProgram == 9:
-    gradualStraightF()
-elif whichProgram == 10:
-    gradualStraightB()
-elif whichProgram == 11:
-    mediumMotors()
-else:
-    print("Not an option, try again.")
+    if whichProgram == "1":
+        colorConfigMK2()
+    elif whichProgram == "2":
+        stopOnBlackF()
+    elif whichProgram == "3":
+        stopOnBlackB()
+    elif whichProgram == "4":
+        stopOnBlackS()
+    elif whichProgram == "5":
+        stopOnWhiteF()
+    elif whichProgram == "6":
+        stopOnWhiteB()
+    elif whichProgram == "7":
+        stopOnWhiteS()
+    elif whichProgram == "8":
+        turnGradualGyro()
+    elif whichProgram == "9":
+        gradualStraightF()
+    elif whichProgram == "10":
+        gradualStraightB()
+    elif whichProgram == "11":
+        mediumMotors()
+    elif whichProgram == "q":
+        stop = 1
+    else:
+        print("Not an option, try again.")
