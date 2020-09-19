@@ -62,7 +62,7 @@ while stop == 0:
     elif whichProgram == "7":
         stopOnWhiteS()
     elif whichProgram == "8":
-        sideLineFollower(lineFollowerDistance)
+        sideLineFollower(p3SSensor, lineFollowerDistance)
     elif whichProgram == "9":
         turnGradualGyro()
     elif whichProgram == "10":
