@@ -20,52 +20,53 @@ p2BSensor = ColorSensor(Port.S2)
 p3SSensor = ColorSensor(Port.S3)
 def colorConfigMK2():
 
-    frontWhite = 0
-    sideWhite = 0
-    backWhite = 0
+    frontWhite = -1000
+    sideWhite = -1000
+    backWhite = -1000
 
-    while frontWhite == 0 or sideWhite == 0 or backWhite == 0:
+    while frontWhite == -1000 or sideWhite == -1000 or backWhite == -1000:
         listOfButtons = ev3.buttons.pressed()
         for oneButton in listOfButtons:
             print(oneButton)
             if oneButton == Button.RIGHT:
-                sideWhite = p1FSensor.reflection()
+                sideWhite = p3SSensor.reflection()
                 print("Side value is: " + str(sideWhite))
             elif oneButton == Button.UP:
-                frontWhite = p2BSensor.reflection()
+                frontWhite = p1FSensor.reflection()
                 print("Front value is: " + str(frontWhite))
             elif oneButton == Button.DOWN:
-                backWhite = p3SSensor.reflection()
+                backWhite = p2BSensor.reflection()
                 print("Back value is: " + str(backWhite))
     print("White sensing is done.")            
     time.sleep(2)
 
     print("Starting sensing for black.")
-    frontBlack = 0
-    sideBlack = 0
-    backBlack = 0
+    frontBlack = 1000
+    sideBlack = 1000
+    backBlack = 1000
 
-    while frontBlack == 0 or sideBlack == 0 or backBlack == 0:
+    while frontBlack == 1000 or sideBlack == 1000 or backBlack == 1000:
         listOfButtons = ev3.buttons.pressed()
         for oneButton in listOfButtons:
             print(oneButton)
             if oneButton == Button.RIGHT:
-                sideBlack = p1FSensor.reflection()
+                sideBlack = p3SSensor.reflection()
                 print("Side value is: " + str(sideBlack))
             elif oneButton == Button.UP:
-                frontWhite = p2BSensor.reflection()
+                frontBlack = p1FSensor.reflection()
                 print("Front value is: " + str(frontBlack))
             elif oneButton == Button.DOWN:
-                backWhite = p3SSensor.reflection()
+                backBlack = p2BSensor.reflection()
                 print("Back value is: " + str(backBlack))
     print("Black sensing is done.")
-
+    print("writing file")
     #Write values to file
     f = open("ConfiguredColor.txt", "w")
-    f.write(str(frontColorSensorWhite)+'\n')
-    f.write(str(backColorSensorWhite)+'\n')
-    f.write(str(sideColorSensorWhite)+'\n')
-    f.write(str(frontColorSensorBlack)+'\n')
-    f.write(str(backColorSensorBlack)+'\n')
-    f.write(str(sideColorSensorBlack)+'\n')
+    f.write(str(frontWhite)+'\n')
+    f.write(str(backWhite)+'\n')
+    f.write(str(sideWhite)+'\n')
+    f.write(str(frontBlack)+'\n')
+    f.write(str(backBlack)+'\n')
+    f.write(str(sideBlack)+'\n')
     f.close()
+    print("finished writing file")
