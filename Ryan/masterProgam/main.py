@@ -19,6 +19,7 @@ from StopOnBlackMK3 import stopOnBlackS
 from StopOnBlackMK3 import stopOnWhiteF
 from StopOnBlackMK3 import stopOnWhiteB
 from StopOnBlackMK3 import stopOnWhiteS
+from StopOnBlackMK3 import sideLineFollower
 from StopOnBlackMK3 import test
 from GradualStraightF import gradualStraightF
 from GradualStraightB import gradualStraightB
@@ -38,6 +39,7 @@ p2BSensor = ColorSensor(Port.S2)
 p3SSensor = ColorSensor(Port.S3)
 p4FSensor = GyroSensor(Port.S4)
 stop = 0
+lineFollowerDistance = 100
 # Write your program here.
 #Calls functions imported from programs
 while stop == 0:
@@ -60,12 +62,14 @@ while stop == 0:
     elif whichProgram == "7":
         stopOnWhiteS()
     elif whichProgram == "8":
-        turnGradualGyro()
+        sideLineFollower(lineFollowerDistance)
     elif whichProgram == "9":
-        gradualStraightF()
+        turnGradualGyro()
     elif whichProgram == "10":
-        gradualStraightB()
+        gradualStraightF()
     elif whichProgram == "11":
+        gradualStraightB()
+    elif whichProgram == "12":
         mediumMotors()
     elif whichProgram == "q":
         stop = 1
