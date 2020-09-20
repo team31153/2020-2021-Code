@@ -9,14 +9,14 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 import time
 
 ev3 = EV3Brick()
-cMotor = Motor(Port.C)
-dMotor = Motor(Port.D)
-aMotor = Motor(Port.A)
-bMotor = Motor(Port.B)
+
 gyro = GyroSensor(Port.S4)
 frontColorSensor = ColorSensor(Port.S3)
 backColorSensor = ColorSensor(Port.S2)
-robot = DriveBase(cMotor, dMotor, 56, 60)
+blackValueBack = -1
+blackValueFront = -1
+whiteValueBack = -1
+whiteValueFront = -1
 
 # The Function
 def config():
