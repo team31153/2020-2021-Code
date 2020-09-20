@@ -29,8 +29,7 @@ def turnGradualGyro():
 
     # Write your program here.
     #Asks for the angle the user wants the robot to turn
-    i = input("What is the angle you want to turn? ")
-    i = int(i)
+    i = 90
     def GradualGyroTurnC(robot, degrees):
         #Sets variables and measures gyro angle
         initialGyro = p4FSensor.angle()

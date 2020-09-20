@@ -31,16 +31,32 @@ def colorConfigMK2():
             if oneButton == Button.RIGHT:
                 sideWhite = p3SSensor.reflection()
                 print("Side value is: " + str(sideWhite))
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Side color sensor")
+                ev3.screen.draw_text(0, 70, "white: " + str(sideWhite))
             elif oneButton == Button.UP:
                 frontWhite = p1FSensor.reflection()
                 print("Front value is: " + str(frontWhite))
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Front color sensor")
+                ev3.screen.draw_text(0, 70, "white: " + str(frontWhite))
             elif oneButton == Button.DOWN:
                 backWhite = p2BSensor.reflection()
                 print("Back value is: " + str(backWhite))
-    print("White sensing is done.")            
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Back color sensor")
+                ev3.screen.draw_text(0, 70, "white: " + str(backWhite))
+
+    print("White sensing is done.") 
+    ev3.screen.clear()
+    ev3.screen.draw_text(0,50, "White sensing")
+    ev3.screen.draw_text(0,70, "is done.")
     time.sleep(2)
 
     print("Starting sensing for black.")
+    ev3.screen.clear()
+    ev3.screen.draw_text(0,50, "Starting sensing")
+    ev3.screen.draw_text(0,70, "for black.")
     frontBlack = 1000
     sideBlack = 1000
     backBlack = 1000
@@ -52,13 +68,26 @@ def colorConfigMK2():
             if oneButton == Button.RIGHT:
                 sideBlack = p3SSensor.reflection()
                 print("Side value is: " + str(sideBlack))
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Side color sensor")
+                ev3.screen.draw_text(0, 70, "black: " + str(sideBlack))
             elif oneButton == Button.UP:
                 frontBlack = p1FSensor.reflection()
                 print("Front value is: " + str(frontBlack))
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Front color sensor")
+                ev3.screen.draw_text(0, 70, "black: " + str(frontBlack))
             elif oneButton == Button.DOWN:
                 backBlack = p2BSensor.reflection()
                 print("Back value is: " + str(backBlack))
+                ev3.screen.clear()
+                ev3.screen.draw_text(0, 50, "Back color sensor")
+                ev3.screen.draw_text(0, 70, "black: " + str(backBlack))
     print("Black sensing is done.")
+    ev3.screen.clear()
+    ev3.screen.draw_text(0,50, "Black sensing")
+    ev3.screen.draw_text(0,70, "is done.")
+    ev3.screen.draw_text(0,90, "Writing file.")
     print("writing file")
     #Write values to file
     f = open("ConfiguredColor.txt", "w")
@@ -70,3 +99,6 @@ def colorConfigMK2():
     f.write(str(sideBlack)+'\n')
     f.close()
     print("finished writing file")
+    ev3.screen.clear()
+    ev3.screen.draw_text(0,50, "Finished")
+    ev3.screen.draw_text(0,70, "writing file")
