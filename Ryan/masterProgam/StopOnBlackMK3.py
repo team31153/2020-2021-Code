@@ -115,7 +115,7 @@ def stopOnBlackS():
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
-def sideLineFollower(line_sensor, distance):
+def sideLineFollower(line_sensor):
 
     readAllValues()
     print("Read configured color side value white: " + str(sideColorSensorWhite))

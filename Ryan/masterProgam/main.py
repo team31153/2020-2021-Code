@@ -6,7 +6,7 @@ from pybricks.parameters import Port, Stop, Direction, Button, Color
 from pybricks.tools import wait, StopWatch, DataLog
 from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
-
+import time
 
 # This program requires LEGO EV3 MicroPython v2.0 or higher.
 # Click "Open user guide" on the EV3 extension tab for more information.
@@ -39,39 +39,32 @@ p2BSensor = ColorSensor(Port.S2)
 p3SSensor = ColorSensor(Port.S3)
 p4FSensor = GyroSensor(Port.S4)
 stop = 0
-lineFollowerDistance = 100
+
 # Write your program here.
 #Calls functions imported from programs
-while stop == 0:
 
-    whichProgram = input("Which program do you want to run? ")
-    whichProgram = whichProgram
+def waiting():
+    ev3.screen.clear()
+    ev3.screen.draw_text(0, 50, "Choose a")
+    ev3.screen.draw_text(0, 70, "program")
 
-    if whichProgram == "1":
-        colorConfigMK2()
-    elif whichProgram == "2":
-        stopOnBlackF()
-    elif whichProgram == "3":
-        stopOnBlackB()
-    elif whichProgram == "4":
-        stopOnBlackS()
-    elif whichProgram == "5":
-        stopOnWhiteF()
-    elif whichProgram == "6":
-        stopOnWhiteB()
-    elif whichProgram == "7":
-        stopOnWhiteS()
-    elif whichProgram == "8":
-        sideLineFollower(p3SSensor, lineFollowerDistance)
-    elif whichProgram == "9":
-        turnGradualGyro()
-    elif whichProgram == "10":
-        gradualStraightF()
-    elif whichProgram == "11":
-        gradualStraightB()
-    elif whichProgram == "12":
-        mediumMotors()
-    elif whichProgram == "q":
-        stop = 1
-    else:
-        print("Not an option, try again.")
+
+
+while True:
+
+    listOfButtons = ev3.buttons.pressed()
+    for oneButton in listOfButtons:
+        print(oneButton)
+        waiting()
+        if oneButton == Button.CENTER:
+            colorConfigMK2()
+            waiting()
+        if oneButton == Button.UP:
+            sideLineFollower(p3SSensor)
+        if oneButton == Button.RIGHT:
+            stopOnBlackF
+        if oneButton == Button.DOWN:
+            stopOnBlackB
+        if oneButton == Button.LEFT:
+            turnGradualGyro()
+
