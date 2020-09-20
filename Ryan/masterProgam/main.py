@@ -62,9 +62,8 @@ while True:
         if oneButton == Button.UP:
             sideLineFollower(p3SSensor)
         if oneButton == Button.RIGHT:
-            stopOnBlackF
+            stopOnBlackF()
         if oneButton == Button.DOWN:
-            stopOnBlackB
+            stopOnBlackB()
         if oneButton == Button.LEFT:
             turnGradualGyro()
-
