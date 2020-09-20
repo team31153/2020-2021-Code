@@ -21,7 +21,9 @@ bMotor = Motor(Port.B)
 gyro = GyroSensor(Port.S4)
 frontColorSensor = ColorSensor(Port.S3)
 sideColorSensor = ColorSensor(Port.S2)
-robot = DriveBase(cMotor, dMotor, 56, 60)
+
+robot = DriveBase(cMotor, dMotor, wheel_diameter=56, axle_track=60)
+
 blackValueBack = -1
 blackValueFront = -1
 whiteValueBack = -1
@@ -42,7 +44,7 @@ def sideLineFollower():
     whiteValueFront = int(f.readline())
     threshold = (blackValueBack + whiteValueBack) / 2
     while True:
-        proportionalGain = 1.2
+        proportionalGain = -1.5
         deviation = sideColorSensor.reflection() - threshold
         turnRate = proportionalGain * deviation
         robot.drive(50, turnRate)
