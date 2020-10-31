@@ -11,44 +11,47 @@ import time
 
 # This program requires LEGO EV3 MicroPython v2.0 or higher.
 # Click "Open user guide" on the EV3 extension tab for more information.
-
-
-# Create your objects here.
-ev3 = EV3Brick()
-cMotor = Motor(Port.C)
-dMotor = Motor(Port.D)
-aMotor = Motor(Port.A)
-bMotor = Motor(Port.B)
-gyro = GyroSensor(Port.S4)
-frontColorSensor = ColorSensor(Port.S3)
-backColorSensor = ColorSensor(Port.S2)
-robot = DriveBase(cMotor, dMotor, 56, 60)
-
-
-# Write your program here.
-ev3.speaker.beep()
-#!/usr/bin/env pybricks-micropython
-from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
-                                 InfraredSensor, UltrasonicSensor, GyroSensor)
-from pybricks.parameters import Port, Stop, Direction, Button, Color
-from pybricks.tools import wait, StopWatch, DataLog
-from pybricks.robotics import DriveBase
-from pybricks.media.ev3dev import SoundFile, ImageFile
-import time
-
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
-
-
 # Create your objects here.
 ev3 = EV3Brick()
 #initialize color sensors
 p1BSensor = ColorSensor(Port.S1)
 p2SSensor = ColorSensor(Port.S2)
 p3FSensor = ColorSensor(Port.S3)
-def colorConfig():
+ev3 = EV3Brick()
+cMotor = Motor(Port.C)
+dMotor = Motor(Port.D)
+aMotor = Motor(Port.A)
+bMotor = Motor(Port.B)
+gyro = GyroSensor(Port.S4)
 
+
+
+robot = DriveBase(cMotor, dMotor, wheel_diameter=56, axle_track=60)
+
+blackValueBack = -1
+blackValueFront = -1
+whiteValueBack = -1
+whiteValueFront = -1
+def readAllValues():
+
+    # Read all Files
+    f = open("ConfiguredColor.txt", "r")
+    global frontColorSensorWhite
+    global backColorSensorWhite
+    global sideColorSensorWhite
+    global frontColorSensorBlack
+    global backColorSensorBlack
+    global sideColorSensorBlack
+    frontColorSensorWhite = int(f.readline())
+    backColorSensorWhite = int(f.readline())
+    sideColorSensorWhite = int(f.readline())
+    frontColorSensorBlack = int(f.readline())
+    backColorSensorBlack = int(f.readline())
+    sideColorSensorBlack = int(f.readline())
+    print("In read all values" + str(frontColorSensorBlack))
+    f.close()
+def colorConfig():
+    readAllValues
     frontWhite = -1000
     sideWhite = -1000
     backWhite = -1000
@@ -131,11 +134,11 @@ def colorConfig():
     ev3.screen.clear()
     ev3.screen.draw_text(0,50, "Finished")
     ev3.screen.draw_text(0,70, "writing file")
-def lineFollower(whiteValue, blackValue, lineFollowingDistance):
+def lineFollower(lineFollowingDistance):
     distanceTraveled = robot.distance()
 
 
-    threshold = (whiteValue + blackValue) / 2
+    threshold = (75 + 9) / 2
 
     # Set the drive speed at 100 millimeters per second.
     DRIVE_SPEED = 100
@@ -182,7 +185,44 @@ def gradualGyroForward(desiredDistance, speed):
     while distanceTraveled < desiredDistance: #while the current distance of the robot is less than the distance that we want to go:
         distanceTraveled = robot.distance() #we define the distance traveled variable again, as this is a while loop, and the distance of the robot from its starting point is always changing
         if rampPower < speed: # this is the "gradual" part of our program, where the speed of the robot increases until it reaches the speed that we wanted it to go at.
-            rampPower = rampPower + 0.3
+            rampPower = rampPower + 0.5
+
+        # This is the Gyro Part of our code.
+        ang = gyro.angle()
+
+        # If the angle that the gyro is sensing is NOT equal to the initial gyro (0)
+        if ang != initialGyro:
+        # Turn that angle to GET to the value of the initial gyro.
+            robot.turn(ang)
+
+        # Print values for debug
+        print("RampPower:" + str(rampPower))
+        print("Angle:" + str(ang))
+        print("Distance:" + str(distanceTraveled))
+
+        # Drive the robot
+        robot.drive(rampPower, 0)
+def gradualGyroBackward(desiredDistance, speed):
+    print("desiredDistance:" + str(desiredDistance))
+    print("Speed:" + str(speed))
+    
+    initialGyro = 0
+    rampPower = 0
+    
+ 
+
+    # Here is the main code.
+    robot.reset()
+
+    #Setting the initial value for distance
+    distanceTraveled = robot.distance()
+
+    gyro.reset_angle(0) #resets the gyro angle to zero
+
+    while distanceTraveled > desiredDistance: #while the current distance of the robot is less than the distance that we want to go:
+        distanceTraveled = robot.distance() #we define the distance traveled variable again, as this is a while loop, and the distance of the robot from its starting point is always changing
+        if rampPower > speed: # this is the "gradual" part of our program, where the speed of the robot increases until it reaches the speed that we wanted it to go at.
+            rampPower = rampPower - 0.5
 
         # This is the Gyro Part of our code.
         ang = gyro.angle()
@@ -200,31 +240,17 @@ def gradualGyroForward(desiredDistance, speed):
         # Drive the robot
         robot.drive(rampPower, 0)
 
-gradualGyroForward(845, 100)
+
+
+"colorConfig()"
+
+gradualGyroForward(865, 100)
 wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(20, 100)
-wait(10)
-gradualGyroForward(10, 100)
-wait(10)
+gradualGyroForward(210, 29)
 robot.straight(-80)
-robot.turn(55)
-robot.straight(60)
+robot.turn(81)
+robot.straight(90)
+lineFollower(300)
 
 
 
