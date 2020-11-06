@@ -102,3 +102,5 @@ def colorConfig():
     ev3.screen.clear()
     ev3.screen.draw_text(0,50, "Finished")
     ev3.screen.draw_text(0,70, "writing file")
+
+colorConfig()

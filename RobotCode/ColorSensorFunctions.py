@@ -151,3 +151,49 @@ def sideLineFollower(line_sensor):
         print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
+
+def backLineFollower(line_sensor, desiredDistance):
+
+    readAllValues()
+    print("Read configured color back value white: " + str(backColorSensorWhite))
+    print("Read configured color back value black: " + str(backColorSensorBlack))
+
+    ev3 = EV3Brick()
+    gyro = GyroSensor(Port.S4)
+    cMotor = Motor(Port.C)
+    dMotor = Motor(Port.D)
+    robot = DriveBase(cMotor, dMotor, 56, 60)    
+
+    threshold = (backColorSensorWhite + backColorSensorBlack) / 2
+
+    # Set the drive speed at 100 millimeters per second.
+    speed = -100
+
+    robot.reset()
+
+    #Setting the initial value for distance
+    distanceTraveled = robot.distance()
+
+    # Set the gain of the proportional line controller. This means that for every
+    # percentage point of light deviating from the threshold, we set the turn
+    # rate of the drivebase to 1.2 degrees per second.
+
+    # For example, if the light value deviates from the threshold by 10, the robot
+    # steers at 10*1.2 = 12 degrees per second.
+    PROPORTIONAL_GAIN = 0.8
+
+    # Start following the line endlessly.
+
+    while distanceTraveled > desiredDistance:
+        distanceTraveled = robot.distance()
+
+        # Calculate the deviation from the threshold.
+        deviation = line_sensor.reflection() - threshold
+        
+        # Calculate the turn rate.
+        turn_rate = PROPORTIONAL_GAIN * deviation
+
+        print("Color sensor reflection is " + str(line_sensor.reflection()))
+        print("Turn rate is: " + str(turn_rate))
+        # Set the drive base speed and turn rate.
+        robot.drive(speed, turn_rate)

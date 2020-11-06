@@ -12,8 +12,8 @@ import time
 # Click "Open user guide" on the EV3 extension tab for more information.
 #Calls functions from programs
 from TurnGradualGyro import turnGradualGyro
-from GraduaGyroF import gradualGyroForward
-from GraduaGyroB import gradualGyroBackward
+from GradualGyroF import gradualGyroForward
+from GradualGyroB import gradualGyroBackward
 from ColorSensorFunctions import stopOnBlackF
 from ColorSensorFunctions import stopOnBlackB
 from ColorSensorFunctions import stopOnBlackS
@@ -21,6 +21,7 @@ from ColorSensorFunctions import stopOnWhiteF
 from ColorSensorFunctions import stopOnWhiteB
 from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
+from ColorSensorFunctions import backLineFollower
 from ColorSensorFunctions import test
 
 
@@ -41,3 +42,4 @@ p4GSensor = GyroSensor(Port.S4)
 # Write your program here.
 #Calls functions imported from programs
 
+backLineFollower(p1BSensor, -400)
