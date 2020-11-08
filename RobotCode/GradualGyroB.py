@@ -18,6 +18,8 @@ def gradualGyroBackward(desiredDistance, speed):
     initialGyro = 0
     rampPower = 0
     
+    desiredDistance = desiredDistance * -1
+    speed = speed * -1
  
 
     # Here is the main code.

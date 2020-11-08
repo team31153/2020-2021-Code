@@ -22,7 +22,7 @@ from ColorSensorFunctions import stopOnWhiteB
 from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollower
-from ColorSensorFunctions import test
+
 
 
 # Create your objects here.
@@ -42,4 +42,5 @@ p4GSensor = GyroSensor(Port.S4)
 # Write your program here.
 #Calls functions imported from programs
 
-backLineFollower(p1BSensor, -400)
+gradualGyroBackward(70, 100)
+backLineFollower(p1BSensor, -600)
