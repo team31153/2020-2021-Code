@@ -47,6 +47,7 @@ def colorConfig():
                 ev3.screen.draw_text(0, 50, "Back color sensor")
                 ev3.screen.draw_text(0, 70, "white: " + str(backWhite))
 
+    time.sleep(2)
     print("White sensing is done.") 
     ev3.screen.clear()
     ev3.screen.draw_text(0,50, "White sensing")
@@ -83,6 +84,8 @@ def colorConfig():
                 ev3.screen.clear()
                 ev3.screen.draw_text(0, 50, "Back color sensor")
                 ev3.screen.draw_text(0, 70, "black: " + str(backBlack))
+
+    time.sleep(2)
     print("Black sensing is done.")
     ev3.screen.clear()
     ev3.screen.draw_text(0,50, "Black sensing")
