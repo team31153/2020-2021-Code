@@ -152,17 +152,17 @@ def sideLineFollower(line_sensor):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def backLineFollower(line_sensor, desiredDistance):
+def backLineFollower(line_sensor, desiredDistance, cMotor, dMotor, robot):
 
     readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
     print("Read configured color back value black: " + str(backColorSensorBlack))
 
+    """
     ev3 = EV3Brick()
-    gyro = GyroSensor(Port.S4)
     cMotor = Motor(Port.C)
     dMotor = Motor(Port.D)
-    robot = DriveBase(cMotor, dMotor, 56, 60)    
+    robot = DriveBase(cMotor, dMotor, 56, 60)    """
 
     threshold = (backColorSensorWhite + backColorSensorBlack) / 2
 

@@ -11,7 +11,15 @@ import time
 # Everything above allows us to import the EV3 files to write our code.
 # Click "Open user guide" on the EV3 extension tab for more information.
 
-def gradualGyroBackward(desiredDistance, speed):
+def gradualGyroBackward(desiredDistance, speed, gyro, cMotor, dMotor, robot):
+
+    """
+    cMotor = Motor(Port.C)
+    dMotor = Motor(Port.D)
+    robot = DriveBase(cMotor, dMotor, 56, 60)
+
+    gyro = GyroSensor(Port.S4)"""
+    
     print("desiredDistance:" + str(desiredDistance))
     print("Speed:" + str(speed))
     
