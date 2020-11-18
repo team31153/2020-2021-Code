@@ -42,5 +42,11 @@ p4GSensor = GyroSensor(Port.S4)
 # Write your program here.
 #Calls functions imported from programs
 
-gradualGyroBackward(70, 100, p4GSensor, cMotor, dMotor, robot)
+# Get out of base to go on line
+gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
+# Line follows
 backLineFollower(p1BSensor, -600, cMotor, dMotor, robot)
+# Turns
+print("Durr")
+turnGradualGyro(-90, cMotor, dMotor, robot, p4GSensor)
+print("Slurr")
