@@ -13,24 +13,16 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 
 # Create your objects here.
-def turnGradualGyro():
+def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
     ev3 = EV3Brick()
 
 
     # Write your program here.
-    #Initialize motors
-    cMotor = Motor(Port.C)
-    dMotor = Motor(Port.D)
-    rr = DriveBase(cMotor, dMotor, 56, 60)
-
-    # Intialize sensors 
-    p4GSensor = GyroSensor(Port.S4)
     p4GSensor.reset_angle(0)
 
     # Write your program here.
     #Asks for the angle the user wants the robot to turn
-    i = 90
-    def GradualGyroTurnC(robot, degrees):
+    def GradualGyroTurnC(robot, p4GSensor, degrees ):
         #Sets variables and measures gyro angle
         initialGyro = p4GSensor.angle()
         newAngle = 0
@@ -46,7 +38,7 @@ def turnGradualGyro():
         #Robot stops after reaching inputed degrees
         robot.stop(Stop.COAST)
 
-    def GradualGyroTurnAC(robot, degrees):
+    def GradualGyroTurnAC(robot, p4GSensor, degrees):
         #Sets variables and measures gyro angle
         initialGyro = p4GSensor.angle()
         newAngle = 0
@@ -64,10 +56,10 @@ def turnGradualGyro():
 
     if i > 0:
         #if angle is positive then turn clockwise
-        GradualGyroTurnC(rr, i)
+        GradualGyroTurnC(rr, p4GSensor, i)
     elif i < 0:
         #if angle is negative then turn anticlockwise
-        GradualGyroTurnAC(rr, i)
+        GradualGyroTurnAC(rr, p4GSensor, i)
     else:
         #if angle is 0 then don't  durn
         print("Invalid Angle")
