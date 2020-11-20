@@ -20,6 +20,7 @@ from ColorSensorFunctions import stopOnWhiteB
 from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollower
+from ColorSensorFunctions import sideLineFollowerInverse
 
 
 
@@ -43,10 +44,10 @@ gyro = GyroSensor(Port.S4)
 robot = DriveBase(cMotor, dMotor, wheel_diameter=56, axle_track=60)
 "colorConfig()"
 
-gradualGyroForward(865, 100)
+gradualGyroForward(840, 100)
 wait(10)
-gradualGyroForward(210, 29)
-robot.straight(-80)
+gradualGyroForward(180, 25)
+robot.straight(-100)
 robot.turn(81)
-robot.straight(90)
-lineFollower(300)
+robot.straight(50)
+# Do gyro here, because linefollower won't work.
