@@ -22,12 +22,6 @@ from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollower
 from ColorSensorFunctions import frontLineFollower
 
-
-
-
-
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
 # Create your objects here.
 ev3 = EV3Brick()
 #initialize color sensors
@@ -52,6 +46,6 @@ robot.straight(-90)
 robot.turn(81)
 robot.straight(100)
 robot.turn(-80)
-frontLineFollower()
+frontLineFollower(50)
 robot.straight(20)
-frontLineFollower()
+frontLineFollower(50)
