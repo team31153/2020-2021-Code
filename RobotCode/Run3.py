@@ -21,6 +21,7 @@ from ColorSensorFunctions import stopOnWhiteF
 from ColorSensorFunctions import stopOnWhiteB
 from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
+from ColorSensorFunctions import backLineFollowerRun3
 from ColorSensorFunctions import backLineFollower
 
 
@@ -45,8 +46,10 @@ p4GSensor = GyroSensor(Port.S4)
 # Get out of base to go on line
 gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
 # Line follows
-backLineFollower(p1BSensor, -600, cMotor, dMotor, robot)
+print("before line follower")
+backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot)
+print("after line follower")
 # Turns
-print("Durr")
+#print("Durr")
 turnGradualGyro(-90, cMotor, dMotor, robot, p4GSensor)
-print("Slurr")
+#print("Slurr")
