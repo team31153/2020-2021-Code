@@ -8,7 +8,7 @@ from pybricks.tools import wait, StopWatch, DataLog
 from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
 import time
-
+from GyroF import gyroForward
 from TurnGradualGyro import turnGradualGyro
 from GradualGyroF import gradualGyroForward
 from GradualGyroB import gradualGyroBackward
@@ -20,7 +20,7 @@ from ColorSensorFunctions import stopOnWhiteB
 from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollower
-from ColorSensorFunctions import frontLineFollower
+from ColorSensorFunctions import frontLineFollowerStopWithSide
 
 # Create your objects here.
 ev3 = EV3Brick()
@@ -39,13 +39,24 @@ gyro = GyroSensor(Port.S4)
 robot = DriveBase(cMotor, dMotor, wheel_diameter=56, axle_track=60)
 
 # Code Here.
-gradualGyroForward(829, 100)
+gradualGyroForward(823, 135)
 wait(10)
-gradualGyroForward(180, 25)
+gradualGyroForward(190, 25)
 robot.straight(-90)
 robot.turn(81)
-robot.straight(100)
+robot.straight(90)
 robot.turn(-80)
-frontLineFollower(50)
+frontLineFollowerStopWithSide(65)
 robot.straight(20)
-frontLineFollower(50)
+frontLineFollowerStopWithSide(65)
+robot.straight(-60)
+robot.turn(110)
+robot.straight(160)
+robot.turn(-115)
+robot.GyroF(100)
+robot.straight(-50)
+robot.GyroF(100)
+robot.straight(-50)
+robot.GyroF(100)
+robot.straight(-50)
+robot.GyroF(100)
