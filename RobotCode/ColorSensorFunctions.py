@@ -235,8 +235,7 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-
-def frontLineFollower(speed):
+def frontLineFollowerStopWithSide(speed):
     P3FSensor = ColorSensor(Port.S3)
     readAllValues()
     print("Read configured color front value white: " + str(frontColorSensorWhite))
