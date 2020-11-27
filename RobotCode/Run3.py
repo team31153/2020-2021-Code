@@ -50,6 +50,3 @@ print("before line follower")
 backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot)
 print("after line follower")
 # Turns
-#print("Durr")
-turnGradualGyro(-90, cMotor, dMotor, robot, p4GSensor)
-#print("Slurr")
