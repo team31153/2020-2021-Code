@@ -235,6 +235,25 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
+def align1Run3(p3FSensor, cMotor, dMotor, robot):
+    readAllValues()
+    print("Read configured color back value black: " + str(backColorSensorBlack))
+    print("Read configured color front value black: " + str(frontColorSensorBlack))
+
+    frontBlack = frontColorSensorBlack + 3
+    backBlack = backColorSensorBlack + 3
+
+    reflection = p3FSensor.reflection()
+    speed = 100
+    steering = 60
+
+    while reflection > frontBlack:
+        robot.turn(steering)
+        reflection = p3FSensor.reflection()
+        print("Reflection is: " + str(reflection))
+
+
+
 def frontLineFollowerStopWithSide(speed):
     P3FSensor = ColorSensor(Port.S3)
     readAllValues()
