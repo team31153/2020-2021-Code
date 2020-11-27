@@ -23,6 +23,7 @@ from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollowerRun3
 from ColorSensorFunctions import backLineFollower
+from ColorSensorFunctions import align1Run3
 
 
 
@@ -32,7 +33,7 @@ ev3 = EV3Brick()
 #Initialize Motors
 cMotor = Motor(Port.C)
 dMotor = Motor(Port.D)
-robot = DriveBase(cMotor, dMotor, 56, 60)
+robot = DriveBase(cMotor, dMotor, 55, 104)
 
 #initialize color sensors
 p1BSensor = ColorSensor(Port.S1)
@@ -44,9 +45,11 @@ p4GSensor = GyroSensor(Port.S4)
 #Calls functions imported from programs
 
 # Get out of base to go on line
-gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
+#gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
 # Line follows
 print("before line follower")
 backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot)
 print("after line follower")
 # Turns
+robot.turn(106)
+#align1Run3(p3FSensor, cMotor, dMotor, robot)
