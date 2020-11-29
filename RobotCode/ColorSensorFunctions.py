@@ -194,7 +194,7 @@ def backLineFollower(line_sensor, desiredDistance, cMotor, dMotor, robot):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot):
+def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
     readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
     print("Read configured color back value black: " + str(backColorSensorBlack))
@@ -204,7 +204,6 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot):
     threshold = (backColorSensorWhite + backColorSensorBlack) / 2
 
     # Set the drive speed at 100 millimeters per second.
-    speed = -100
 
     reflection = sideSensor.reflection()
     sideBlack = sideColorSensorBlack + 2

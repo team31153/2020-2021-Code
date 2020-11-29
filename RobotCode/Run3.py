@@ -48,8 +48,9 @@ p4GSensor = GyroSensor(Port.S4)
 #gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
 # Line follows
 print("before line follower")
-backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot)
+backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot, -65)
 print("after line follower")
 # Turns
-robot.turn(106)
+#robot.turn(106)
+turnGradualGyro(-90, cMotor, dMotor, robot, p4GSensor)
 #align1Run3(p3FSensor, cMotor, dMotor, robot)

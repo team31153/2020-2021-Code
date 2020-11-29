@@ -22,8 +22,9 @@ def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
 
     # Write your program here.
     #Asks for the angle the user wants the robot to turn
-    def GradualGyroTurnC(robot, p4GSensor, degrees ):
+    def GradualGyroTurnC(robot, p4GSensor, degrees):
         #Sets variables and measures gyro angle
+        p4GSensor.reset_angle(0)
         initialGyro = p4GSensor.angle()
         newAngle = 0
         steering = -100
@@ -40,17 +41,21 @@ def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
 
     def GradualGyroTurnAC(robot, p4GSensor, degrees):
         #Sets variables and measures gyro angle
+        p4GSensor.reset_angle(0)
         initialGyro = p4GSensor.angle()
         newAngle = 0
-        steering = 100
-        speed = 0
+        steering = 30
+        nSteering = -30
+        speed = 5
         #Make robot keep on turning until it has reached the inputed degrees
         while newAngle > degrees:
             robot.drive(speed, steering)
-            speed = speed+0.1
             newAngle = initialGyro + p4GSensor.angle()
             print("Angle is " + str(newAngle))
-            print("Speed is " + str(speed))
+        while newAngle < degrees:
+            robot.drive(speed, nSteering)
+            newAngle = initialGyro + p4GSensor.angle()
+            print("Angle is " + str(newAngle))
         #Robot stops after reaching inputed degrees
         robot.stop(Stop.COAST)
 
@@ -63,3 +68,4 @@ def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
     else:
         #if angle is 0 then don't  durn
         print("Invalid Angle")
+
