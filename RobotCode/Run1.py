@@ -21,6 +21,8 @@ from ColorSensorFunctions import stopOnWhiteS
 from ColorSensorFunctions import sideLineFollower
 from ColorSensorFunctions import backLineFollower
 from ColorSensorFunctions import frontLineFollowerStopWithSide
+from GyroF import gyroForward
+from GyroB import gyroBackward
 
 # Create your objects here.
 ev3 = EV3Brick()
@@ -39,24 +41,24 @@ gyro = GyroSensor(Port.S4)
 robot = DriveBase(cMotor, dMotor, wheel_diameter=56, axle_track=60)
 
 # Code Here.
-gradualGyroForward(823, 135)
+gyroForward(823, 135)
 wait(10)
-gradualGyroForward(190, 25)
+gradualGyroForward(200, 25)
 robot.straight(-90)
-robot.turn(81)
-robot.straight(90)
+robot.turn(90)
+robot.straight(100)
 robot.turn(-80)
 frontLineFollowerStopWithSide(65)
 robot.straight(20)
 frontLineFollowerStopWithSide(65)
 robot.straight(-60)
 robot.turn(110)
-robot.straight(160)
-robot.turn(-115)
-robot.GyroF(100)
-robot.straight(-50)
-robot.GyroF(100)
-robot.straight(-50)
-robot.GyroF(100)
-robot.straight(-50)
-robot.GyroF(100)
+robot.straight(128)
+robot.turn(-100.5)
+gyroForward(200, 100)
+gyroBackward(-75, -100)
+gyroForward(100, 100)
+gyroBackward(-75, -100)
+gyroForward(100, 100)
+gyroBackward(-75, -100)
+gyroForward(100, 100)
