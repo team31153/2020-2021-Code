@@ -215,7 +215,7 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -1.0
+    PROPORTIONAL_GAIN = -1.2
 
     # Start following the line endlessly.
 
@@ -229,8 +229,6 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
         # Calculate the turn rate.
         turn_rate = PROPORTIONAL_GAIN * deviation
 
-        print("Color sensor reflection is " + str(line_sensor.reflection()))
-        print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 

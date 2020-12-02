@@ -31,6 +31,8 @@ from ColorSensorFunctions import align1Run3
 ev3 = EV3Brick()
 
 #Initialize Motors
+aMotor = Motor(Port.A)
+bMotor = Motor(Port.B)
 cMotor = Motor(Port.C)
 dMotor = Motor(Port.D)
 robot = DriveBase(cMotor, dMotor, 55, 104)
@@ -45,12 +47,18 @@ p4GSensor = GyroSensor(Port.S4)
 #Calls functions imported from programs
 
 # Get out of base to go on line
-#gradualGyroBackward(40, 100, p4GSensor, cMotor, dMotor, robot)
+gradualGyroBackward(200, 100, p4GSensor, cMotor, dMotor, robot)
 # Line follows
 print("before line follower")
 backLineFollowerRun3(p1BSensor, p2SSensor, cMotor, dMotor, robot, -65)
 print("after line follower")
+gradualGyroBackward(30, 100, p4GSensor, cMotor, dMotor, robot)
 # Turns
 #robot.turn(106)
 turnGradualGyro(-90, cMotor, dMotor, robot, p4GSensor)
-#align1Run3(p3FSensor, cMotor, dMotor, robot)
+gradualGyroForward(50, 100, p4GSensor, cMotor, dMotor, robot)
+
+aMotor.run_angle(10000, 15000)
+gradualGyroBackward(15, 100, p4GSensor, cMotor, dMotor, robot)
+
+aMotor.run_angle(10000, -5000)

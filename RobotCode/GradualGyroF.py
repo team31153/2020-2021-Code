@@ -10,30 +10,19 @@ import time
 
 # Everything above allows us to import the EV3 files to write our code.
 # Click "Open user guide" on the EV3 extension tab for more information.
-dMotor = Motor(Port.D)
-cMotor = Motor(Port.C)
-robot = DriveBase(cMotor, dMotor, 56, 60)
-ev3 = EV3Brick()
-gyro = GyroSensor(Port.S4)
 
 
 
-def gradualGyroForward(desiredDistance, speed):
+
+def gradualGyroForward(desiredDistance, speed, gyro, cMotor, dMotor, robot):
     print("desiredDistance:" + str(desiredDistance))
     print("Speed:" + str(speed))
     
     initialGyro = 0
     rampPower = 0
     # This is where the variables are defined.
-    ev3 = EV3Brick()
-    gyro = GyroSensor(Port.S4)
     
-    
-
-    
-    
-
-
+        
     # Here is the main code.
     robot.reset()
 
@@ -44,8 +33,8 @@ def gradualGyroForward(desiredDistance, speed):
 
     while distanceTraveled < desiredDistance: #while the current distance of the robot is less than the distance that we want to go:
         distanceTraveled = robot.distance() #we define the distance traveled variable again, as this is a while loop, and the distance of the robot from its starting point is always changing
-        if rampPower < speed: # this is the "gradual" part of our program, where the speed of the robot increases until it reaches the speed that we wanted it to go at.
-            rampPower = rampPower + 0.75
+        #if rampPower < speed: # this is the "gradual" part of our program, where the speed of the robot increases until it reaches the speed that we wanted it to go at.
+        #    rampPower = rampPower + 0.75
 
         # This is the Gyro Part of our code.
         ang = gyro.angle()
@@ -56,10 +45,7 @@ def gradualGyroForward(desiredDistance, speed):
             robot.turn(ang)
 
         # Print values for debug
-        print("RampPower:" + str(rampPower))
-        print("Angle:" + str(ang))
-        print("Distance:" + str(distanceTraveled))
 
         # Drive the robot
-        robot.drive(rampPower, 0)
+        robot.drive(speed, 0)
     robot.stop(Stop.COAST)

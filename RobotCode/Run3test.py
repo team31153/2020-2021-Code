@@ -25,4 +25,8 @@ p3FSensor = ColorSensor(Port.S3)
 p4GSensor = GyroSensor(Port.S4)
 
 #bMotor.run_angle(700, 10000)
-aMotor.run_angle(1000, -5000)
+
+#aMotor.run_angle(10000, -15000)
+from GradualGyroB import gradualGyroBackward
+
+gradualGyroBackward(15, 100, p4GSensor, cMotor, dMotor, robot)
