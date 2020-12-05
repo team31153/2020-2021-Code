@@ -1,28 +1,16 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
-                                 InfraredSensor, UltrasonicSensor, GyroSensor)
-from pybricks.parameters import Port, Stop, Direction, Button, Color
-from pybricks.tools import wait, StopWatch, DataLog
-from pybricks.robotics import DriveBase
-from pybricks.media.ev3dev import SoundFile, ImageFile
-
-
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
+from Initialize import *
 
 
 # Create your objects here.
-def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
-    ev3 = EV3Brick()
-
+def turnGradualGyro(i):
 
     # Write your program here.
     p4GSensor.reset_angle(0)
 
     # Write your program here.
     #Asks for the angle the user wants the robot to turn
-    def GradualGyroTurnC(robot, p4GSensor, degrees):
+    def GradualGyroTurnC(degrees):
         #Sets variables and measures gyro angle
         p4GSensor.reset_angle(0)
         initialGyro = p4GSensor.angle()
@@ -38,7 +26,7 @@ def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
         print("Angle is " + str(newAngle))
         robot.stop(Stop.COAST)
 
-    def GradualGyroTurnAC(robot, p4GSensor, degrees):
+    def GradualGyroTurnAC(degrees):
         #Sets variables and measures gyro angle
         p4GSensor.reset_angle(0)
         initialGyro = p4GSensor.angle()
@@ -59,10 +47,10 @@ def turnGradualGyro(i, cMotor, dMotor, rr, p4GSensor):
 
     if i > 0:
         #if angle is positive then turn clockwise
-        GradualGyroTurnC(rr, p4GSensor, i)
+        GradualGyroTurnC(i)
     elif i < 0:
         #if angle is negative then turn anticlockwise
-        GradualGyroTurnAC(rr, p4GSensor, i)
+        GradualGyroTurnAC(i)
     else:
         #if angle is 0 then don't  durn
         print("Invalid Angle")

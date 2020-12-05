@@ -1,24 +1,10 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
-InfraredSensor, UltrasonicSensor, GyroSensor)
-from pybricks.parameters import Port, Stop, Direction, Button, Color
-from pybricks.tools import wait, StopWatch, DataLog
-from pybricks.robotics import DriveBase
-from pybricks.media.ev3dev import SoundFile, ImageFile
-import time
+from Initialize import *
 
 # Everything above allows us to import the EV3 files to write our code.
 # Click "Open user guide" on the EV3 extension tab for more information.
 
-def gradualGyroBackward(desiredDistance, speed, gyro, cMotor, dMotor, robot):
-
-    """
-    cMotor = Motor(Port.C)
-    dMotor = Motor(Port.D)
-    robot = DriveBase(cMotor, dMotor, 56, 60)
-
-    gyro = GyroSensor(Port.S4)"""
+def gradualGyroBackward(desiredDistance, speed):
     
     print("desiredDistance:" + str(desiredDistance))
     print("Speed:" + str(speed))
@@ -36,7 +22,7 @@ def gradualGyroBackward(desiredDistance, speed, gyro, cMotor, dMotor, robot):
     #Setting the initial value for distance
     distanceTraveled = robot.distance()
 
-    gyro.reset_angle(0) #resets the gyro angle to zero
+    p4GSensor.reset_angle(0) #resets the gyro angle to zero
 
     while distanceTraveled > desiredDistance: #while the current distance of the robot is less than the distance that we want to go:
         distanceTraveled = robot.distance() #we define the distance traveled variable again, as this is a while loop, and the distance of the robot from its starting point is always changing
@@ -44,7 +30,7 @@ def gradualGyroBackward(desiredDistance, speed, gyro, cMotor, dMotor, robot):
             rampPower = rampPower - 0.5
 
         # This is the Gyro Part of our code.
-        ang = gyro.angle()
+        ang = p4GSensor.angle()
 
         # If the angle that the gyro is sensing is NOT equal to the initial gyro (0)
         if ang != initialGyro:
