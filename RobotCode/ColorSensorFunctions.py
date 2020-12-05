@@ -1,48 +1,22 @@
 #!/usr/bin/env pybricks-micropython
-from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
-                                 InfraredSensor, UltrasonicSensor, GyroSensor)
-from pybricks.parameters import Port, Stop, Direction, Button, Color
-from pybricks.tools import wait, StopWatch, DataLog
-from pybricks.robotics import DriveBase
-from pybricks.media.ev3dev import SoundFile, ImageFile
-
-
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
-
-
-
-# Create your objects here.
-ev3 = EV3Brick()
-
-#Initialize Motors
-cMotor = Motor(Port.C)
-dMotor = Motor(Port.D)
-robot = DriveBase(cMotor, dMotor, 56, 60)
-
-#initialize color sensors
-p1BSensor = ColorSensor(Port.S1)
-p2SSensor = ColorSensor(Port.S2)
-p3FSensor = ColorSensor(Port.S3)
-
-frontColorSensorWhite = -1
-backColorSensorWhite = -1
-sideColorSensorWhite = -1
-frontColorSensorBlack = -1
-backColorSensorBlack = -1
-sideColorSensorBlack = -1
+from Initialize import *
 
 # Write your program here.
+colorSensorValuesInitialized = False
+
 def readAllValues():
+    # Check if it has been read
+    # if colorSensorValuesInitialized:
+    #     return
+
     # Read all Files
     f = open("ConfiguredColor.txt", "r")
-    global frontColorSensorWhite
-    global backColorSensorWhite
-    global sideColorSensorWhite
-    global frontColorSensorBlack
-    global backColorSensorBlack
-    global sideColorSensorBlack
+    # global frontColorSensorWhite
+    # global backColorSensorWhite
+    # global sideColorSensorWhite
+    # global frontColorSensorBlack
+    # global backColorSensorBlack
+    # global sideColorSensorBlack
     frontColorSensorWhite = int(f.readline())
     backColorSensorWhite = int(f.readline())
     sideColorSensorWhite = int(f.readline())
@@ -51,6 +25,9 @@ def readAllValues():
     sideColorSensorBlack = int(f.readline())
     print("In read all values" + str(frontColorSensorBlack))
     f.close()
+
+    # set initialize
+    # colorSensorValuesInitialized = True
 
 def test():
     readAllValues()
@@ -116,7 +93,7 @@ def stopOnBlackS():
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
-def sideLineFollower(line_sensor):
+def sideLineFollower():
 
     readAllValues()
     print("Read configured color side value white: " + str(sideColorSensorWhite))
@@ -142,17 +119,17 @@ def sideLineFollower(line_sensor):
     while True:
 
         # Calculate the deviation from the threshold.
-        deviation = line_sensor.reflection() - threshold
+        deviation = p2SSensor.reflection() - threshold
         
         # Calculate the turn rate.
         turn_rate = PROPORTIONAL_GAIN * deviation
 
-        print("Color sensor reflection is " + str(line_sensor.reflection()))
+        print("Color sensor reflection is " + str(p2SSensor.reflection()))
         print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def backLineFollower(line_sensor, desiredDistance, cMotor, dMotor, robot):
+def backLineFollower(desiredDistance):
 
     readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
@@ -184,17 +161,17 @@ def backLineFollower(line_sensor, desiredDistance, cMotor, dMotor, robot):
         distanceTraveled = robot.distance()
         print(distanceTraveled)
         # Calculate the deviation from the threshold.
-        deviation = line_sensor.reflection() - threshold
+        deviation = p1BSensor.reflection() - threshold
         
         # Calculate the turn rate.
         turn_rate = PROPORTIONAL_GAIN * deviation
 
-        print("Color sensor reflection is " + str(line_sensor.reflection()))
+        print("Color sensor reflection is " + str(p1BSensor.reflection()))
         print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
+def backLineFollowerRun3(speed):
     readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
     print("Read configured color back value black: " + str(backColorSensorBlack))
@@ -205,7 +182,7 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
 
     # Set the drive speed at 100 millimeters per second.
 
-    reflection = sideSensor.reflection()
+    reflection = p2SSensor.reflection()
     sideBlack = sideColorSensorBlack + 2
 
 
@@ -221,10 +198,10 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
 
     while reflection > sideBlack:
         
-        reflection = sideSensor.reflection()
+        reflection = p2SSensor.reflection()
         print(reflection)
         # Calculate the deviation from the threshold.
-        deviation = line_sensor.reflection() - threshold
+        deviation = p1BSensor.reflection() - threshold
         
         # Calculate the turn rate.
         turn_rate = PROPORTIONAL_GAIN * deviation
@@ -232,7 +209,7 @@ def backLineFollowerRun3(line_sensor, sideSensor, cMotor, dMotor, robot, speed):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def align1Run3(p3FSensor, cMotor, dMotor, robot):
+def align1Run3():
     readAllValues()
     print("Read configured color back value black: " + str(backColorSensorBlack))
     print("Read configured color front value black: " + str(frontColorSensorBlack))
@@ -252,7 +229,6 @@ def align1Run3(p3FSensor, cMotor, dMotor, robot):
 
 
 def frontLineFollowerStopWithSide(speed):
-    P3FSensor = ColorSensor(Port.S3)
     readAllValues()
     print("Read configured color front value white: " + str(frontColorSensorWhite))
     print("Read configured color front value black: " + str(frontColorSensorBlack))
@@ -270,16 +246,16 @@ def frontLineFollowerStopWithSide(speed):
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
     PROPORTIONAL_GAIN = -1.8
-    while p2SSensor.reflection() != sideColorSensorBlack:    
+    while p2SSensor.reflection() > sideColorSensorBlack:    
         
     
         # Calculate the deviation from the threshold.
-        deviation = P3FSensor.reflection() - threshold
+        deviation = p3FSensor.reflection() - threshold
         
         # Calculate the turn rate.
         turn_rate = PROPORTIONAL_GAIN * deviation
 
-        print("Color sensor reflection is " + str(P3FSensor.reflection()))
+        print("Color sensor reflection is " + str(p3FSensor.reflection()))
         print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
