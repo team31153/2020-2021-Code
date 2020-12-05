@@ -2,21 +2,19 @@
 from Initialize import *
 
 # Write your program here.
-colorSensorValuesInitialized = False
+
+
 
 def readAllValues():
-    # Check if it has been read
-    # if colorSensorValuesInitialized:
-    #     return
 
     # Read all Files
     f = open("ConfiguredColor.txt", "r")
-    # global frontColorSensorWhite
-    # global backColorSensorWhite
-    # global sideColorSensorWhite
-    # global frontColorSensorBlack
-    # global backColorSensorBlack
-    # global sideColorSensorBlack
+    global frontColorSensorWhite
+    global backColorSensorWhite
+    global sideColorSensorWhite
+    global frontColorSensorBlack
+    global backColorSensorBlack
+    global sideColorSensorBlack
     frontColorSensorWhite = int(f.readline())
     backColorSensorWhite = int(f.readline())
     sideColorSensorWhite = int(f.readline())
@@ -26,16 +24,14 @@ def readAllValues():
     print("In read all values" + str(frontColorSensorBlack))
     f.close()
 
-    # set initialize
-    # colorSensorValuesInitialized = True
 
 def test():
-    readAllValues()
+    # readAllValues()
     print("in test" + str(frontColorSensorBlack))
 
 def stopOnWhiteF():
     
-    readAllValues()
+    # readAllValues()
     print("Read configured color front value: " + str(frontColorSensorWhite))
 
     while p3FSensor.reflection() < frontColorSensorWhite:
@@ -45,7 +41,7 @@ def stopOnWhiteF():
 
 def stopOnWhiteB():
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color back value: " + str(backColorSensorWhite))
 
     while p1BSensor.reflection() < backColorSensorWhite:
@@ -55,7 +51,7 @@ def stopOnWhiteB():
 
 def stopOnWhiteS():
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color side value: " + str(sideColorSensorWhite))
 
     while p2SSensor.reflection() < sideColorSensorWhite:
@@ -65,7 +61,7 @@ def stopOnWhiteS():
 
 def stopOnBlackF():
     
-    readAllValues()
+    # readAllValues()
     print("Read configured color front value: " + str(frontColorSensorBlack))
 
     while p3FSensor.reflection() > frontColorSensorBlack:
@@ -75,7 +71,7 @@ def stopOnBlackF():
 
 def stopOnBlackB():
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color back value: " + str(backColorSensorBlack))
 
     while p1BSensor.reflection() > backColorSensorBlack:
@@ -85,7 +81,7 @@ def stopOnBlackB():
 
 def stopOnBlackS():
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color side value: " + str(sideColorSensorBlack))
 
     while p2SSensor.reflection() > sideColorSensorBlack:
@@ -95,7 +91,7 @@ def stopOnBlackS():
 
 def sideLineFollower():
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color side value white: " + str(sideColorSensorWhite))
     print("Read configured color side value black: " + str(sideColorSensorBlack))
 
@@ -131,7 +127,7 @@ def sideLineFollower():
 
 def backLineFollower(desiredDistance):
 
-    readAllValues()
+    # readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
     print("Read configured color back value black: " + str(backColorSensorBlack))
 
@@ -172,7 +168,7 @@ def backLineFollower(desiredDistance):
         robot.drive(speed, turn_rate)
 
 def backLineFollowerRun3(speed):
-    readAllValues()
+    # readAllValues()
     print("Read configured color back value white: " + str(backColorSensorWhite))
     print("Read configured color back value black: " + str(backColorSensorBlack))
     print("Read configured color side value black: " + str(sideColorSensorBlack))
@@ -210,7 +206,7 @@ def backLineFollowerRun3(speed):
         robot.drive(speed, turn_rate)
 
 def align1Run3():
-    readAllValues()
+    # readAllValues()
     print("Read configured color back value black: " + str(backColorSensorBlack))
     print("Read configured color front value black: " + str(frontColorSensorBlack))
 
@@ -229,7 +225,7 @@ def align1Run3():
 
 
 def frontLineFollowerStopWithSide(speed):
-    readAllValues()
+    # readAllValues()
     print("Read configured color front value white: " + str(frontColorSensorWhite))
     print("Read configured color front value black: " + str(frontColorSensorBlack))
 
