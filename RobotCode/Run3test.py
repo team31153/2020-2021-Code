@@ -7,7 +7,8 @@ from ColorSensorFunctions import *
 
 #bMotor.run_angle(700, 10000)
 
-#aMotor.run_angle(10000, -15000)
+#aMotor.run_angle(10000, -15000)\
 
-turnGradualGyro(90)
+readAllValues()
+stopOnBlackF()
 

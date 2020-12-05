@@ -5,9 +5,9 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
-def Run3():
+readAllValues()
 
-    colorSensorValuesInitialized = False
+def Run3():
 
     # Get out of base to go on line
     gradualGyroBackward(200, 100)
