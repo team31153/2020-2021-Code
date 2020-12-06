@@ -30,12 +30,13 @@ def gradualGyroForward(desiredDistance, speed):
         ang = p4GSensor.angle()
 
         # If the angle that the gyro is sensing is NOT equal to the initial gyro (0)
-        if ang != initialGyro:
+        #if ang != initialGyro:
         # Turn that angle to GET to the value of the initial gyro.
-            robot.turn(ang)
+        #    robot.turn(ang)
 
         # Print values for debug
+        turn = ang * 13
 
         # Drive the robot
-        robot.drive(speed, 0)
+        robot.drive(speed, turn)
     robot.stop(Stop.COAST)
