@@ -9,6 +9,6 @@ readAllValues()
 
 def Run2():
     # Write Code Here:
-    gradualGyroBackward(50, 60)
+    gradualGyroBackward(365, 90)
 
 Run2()
