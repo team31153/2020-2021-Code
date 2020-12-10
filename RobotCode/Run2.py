@@ -9,6 +9,7 @@ readAllValues()
 
 def Run2():
     # Write Code Here:
-    gradualGyroBackward(365, 90)
+    #gradualGyroBackward(320, 90)
+    aMotor.run_angle(10000, 3000)
 
 Run2()
