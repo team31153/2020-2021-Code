@@ -10,7 +10,7 @@ readAllValues()
 def Run3():
 
     # Get out of base to go on line
-    gradualGyroBackward(600, 100)
+    gradualGyroBackward(630, 100)
     # Line follows
     # print("before line follower")
     backLineFollowerRun3(-65)
@@ -18,13 +18,13 @@ def Run3():
     gradualGyroBackward(30, 100)
     # Turns
     #robot.turn(106)
-    turnGradualGyro(-90)
+    turnGradualGyro(-85)
     gradualGyroForward(50, 100)
 
     aMotor.run_angle(10000, 7100)
-    gradualGyroBackward(85, 100)
+    gradualGyroBackward(95, 100)
 
-    aMotor.run_angle(10000, -5100)
+    aMotor.run_angle(10000, -5500)
     gradualGyroForward(150, 20)
 
 Run3()
