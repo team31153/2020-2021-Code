@@ -18,13 +18,14 @@ def Run3():
     gradualGyroBackward(30, 100)
     # Turns
     #robot.turn(106)
-    turnGradualGyro(-85)
+    turnGradualGyro(-87)
     gradualGyroForward(50, 100)
 
     aMotor.run_angle(10000, 7100)
-    gradualGyroBackward(95, 100)
+    gradualGyroBackward(85, 100)
 
-    aMotor.run_angle(10000, -5500)
-    gradualGyroForward(150, 20)
+    aMotor.run_angle(10000, -5300)
+    gradualGyroForward(80, 20)
+    aMotor.run_angle(10000, -1800)
 
 Run3()
