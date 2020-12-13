@@ -1,14 +1,16 @@
 #!/usr/bin/env pybricks-micropython
+
 from TurnGradualGyro import *
 from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
+readAllValues()
 
-aMotor.run_angle(10000, -1600)
+def Run3Pt2():
+    turnGradualGyro(30)
+    gradualGyroForward(40, 40)
+    turnGradualGyro(-30)
+    gradualGyroBackward(500, 100)
 
-
-
-# readAllValues()
-# stopOnBlackF()
-
+Run3Pt2()
