@@ -8,4 +8,5 @@ from GyroB import *
 from GyroF import *
 
 readAllValues()
-aMotor.run_angle(7000, -1800)
+aMotor.run_angle(7000, -2800)
+#2400 - 2800
