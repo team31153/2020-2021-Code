@@ -11,11 +11,6 @@ readAllValues()
 
 # Code Here.
 def Run1():
-    gradualGyroForward(380, 130)
-    sideLineFollowerRun1(75)
-    wait(10)
-    gyroForward(60, 65)
-    gradualGyroForward(200, 26)
     robot.straight(-90)
     robot.turn(110)
     robot.straight(130)
@@ -25,8 +20,8 @@ def Run1():
     robot.straight(135)
     robot.turn(-101)
     robot.straight(41)
-    aMotor.run_angle(7000, 2870)
-    gradualGyroForward(300, 150)
-    aMotor.run_angle(7000, -2870)
+    aMotor.run_angle(7000, 2750)
+    gradualGyroForward(250, 200)
+    aMotor.run_angle(7000, -2750)
     
 Run1()
