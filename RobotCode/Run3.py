@@ -4,6 +4,7 @@ from TurnGradualGyro import *
 from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
+from Run3Pt2 import run3Pt2
 
 readAllValues()
 
@@ -27,5 +28,14 @@ def Run3():
     aMotor.run_angle(10000, -5300)
     gradualGyroForward(80, 20)
     aMotor.run_angle(10000, -1800)
+
+    run3Pt2()
+    bMotor.run_angle(1000, 5700)
+    bMotor.run_angle(1000, -5700)
+    bMotor.run_angle(1000, 5700)
+    bMotor.run_angle(1000, -5700)
+    bMotor.run_angle(1000, 5700)
+    bMotor.run_angle(1000, -5700)
+
 
 Run3()
