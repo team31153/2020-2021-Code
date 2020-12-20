@@ -7,10 +7,10 @@ from ColorSensorFunctions import *
 
 readAllValues()
 
-def Run3Pt2():
+def run3Pt2():
     turnGradualGyro(30)
     gradualGyroForward(40, 40)
     turnGradualGyro(-30)
-    gradualGyroBackward(500, 100)
+    gradualGyroBackward(750, 100)
 
-Run3Pt2()
+#Run3Pt2()
