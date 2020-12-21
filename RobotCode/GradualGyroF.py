@@ -5,8 +5,6 @@ from Initialize import *
 # Click "Open user guide" on the EV3 extension tab for more information.
 
 def gradualGyroForward(desiredDistance, speed):
-    print("desiredDistance:" + str(desiredDistance))
-    print("Speed:" + str(speed))
     
     initialGyro = 0
     rampPower = 0
@@ -40,3 +38,4 @@ def gradualGyroForward(desiredDistance, speed):
         # Drive the robot
         robot.drive(speed, turn)
     robot.stop(Stop.BRAKE)
+    p4GSensor.reset_angle(0)
