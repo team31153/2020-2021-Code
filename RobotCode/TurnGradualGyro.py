@@ -26,7 +26,7 @@ def turnGradualGyro(i):
             robot.drive(speed, steering)
             newAngle = initialGyro + p4GSensor.angle()
         #Robot stops after reaching inputed degrees
-        robot.stop(Stop.COAST)
+        robot.stop(Stop.BRAKE)
 
     def GradualGyroTurnAC(degrees):
         #Sets variables and measures gyro angle
@@ -44,7 +44,7 @@ def turnGradualGyro(i):
             robot.drive(speed, nsteering)
             newAngle = initialGyro + p4GSensor.angle()
         #Robot stops after reaching inputed degrees
-        robot.stop(Stop.COAST)
+        robot.stop(Stop.BRAKE)
 
     if i > 0:
         #if angle is positive then turn clockwise

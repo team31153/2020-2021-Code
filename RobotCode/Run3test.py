@@ -4,15 +4,7 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
-bMotor.run_angle(1000, 5535)
-bMotor.run_angle(1000, -5535)
-bMotor.run_angle(1000, 5535)
-bMotor.run_angle(1000, -5535)
-bMotor.run_angle(1000, 5535)
-bMotor.run_angle(1000, -5535)
-
-
-
+sideLineFollowerRun3(10)
 
 # readAllValues()
 # stopOnBlackF()
