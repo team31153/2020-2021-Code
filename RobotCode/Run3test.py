@@ -4,8 +4,9 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
-sideLineFollowerRun3(10)
-
+print("before")
+turnGradualGyro(-50)
+print("after")
 # readAllValues()
 # stopOnBlackF()
 

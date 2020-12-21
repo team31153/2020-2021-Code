@@ -7,6 +7,7 @@ from ColorSensorFunctions import *
 from Run3Pt2 import run3Pt2
 
 readAllValues()
+p4GSensor.reset_angle(0)
 
 def Run3():
 
@@ -16,16 +17,15 @@ def Run3():
     # print("before line follower")
     backLineFollowerRun3(-50)
     # print("after line follower")
-    gradualGyroBackward(20, 100)
     # Turns
     #robot.turn(106)
-    turnGradualGyro(-87)
-    sideLineFollowerRun3(50)
-    # gradualGyroBackward(25, 100)
+    turnGradualGyro(-84)
+    #sideLineFollowerRun3(50)
+    gradualGyroBackward(25, 100)
 
     aMotor.run_angle(10000, -4500)
     gradualGyroForward(65, 20)
-    aMotor.run_angle(10000, -2600)
+    aMotor.run_angle(10000, -3000)
 
     run3Pt2()
     bMotor.run_angle(1000, 5700)

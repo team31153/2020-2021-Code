@@ -16,11 +16,10 @@ def turnGradualGyro(i):
         initialGyro = p4GSensor.angle()
         newAngle = 0
         steering = -70
-        speed = 0
+        speed = 10
         #Make robot keep on turning until it has reached the inputed degrees
         while newAngle < degrees:
             robot.drive(speed, steering)
-            speed = speed+0.1
             newAngle = initialGyro + p4GSensor.angle()
         while newAngle > degrees:
             robot.drive(speed, steering)
@@ -35,7 +34,7 @@ def turnGradualGyro(i):
         newAngle = 0
         steering = 90
         nsteering = -90
-        speed = 5
+        speed = 10
         #Make robot keep on turning until it has reached the inputed degrees
         while newAngle > degrees:
             robot.drive(speed, steering)
@@ -49,9 +48,11 @@ def turnGradualGyro(i):
     if i > 0:
         #if angle is positive then turn clockwise
         GradualGyroTurnC(i)
+        p4GSensor.reset_angle(0)
     elif i < 0:
         #if angle is negative then turn anticlockwise
         GradualGyroTurnAC(i)
+        p4GSensor.reset_angle(0)
     else:
         #if angle is 0 then don't  durn
         print("Invalid Angle")

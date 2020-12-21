@@ -33,3 +33,4 @@ def gradualGyroBackward(desiredDistance, speed):
         # Drive the robot
         robot.drive(speed, turn)
     robot.stop(Stop.COAST)
+    p4GSensor.reset_angle(0)
