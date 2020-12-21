@@ -49,6 +49,16 @@ def stopOnWhiteB():
         robot.drive(-100,0)
     robot.stop(Stop.BRAKE)
 
+def stopOnWhiteBForward():
+
+    # readAllValues()
+    print("Read configured color back value: " + str(backColorSensorWhite))
+
+    while p1BSensor.reflection() < backColorSensorWhite:
+        print(backColorSensorWhite)
+        robot.drive(100,0)
+    robot.stop(Stop.BRAKE)
+
 def stopOnWhiteS():
 
     # readAllValues()
@@ -241,7 +251,7 @@ def frontLineFollowerStopWithSide(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -1.8
+    PROPORTIONAL_GAIN = -2.5
     while p2SSensor.reflection() > sideColorSensorBlack:    
         
     
