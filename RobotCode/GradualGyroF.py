@@ -39,4 +39,4 @@ def gradualGyroForward(desiredDistance, speed):
 
         # Drive the robot
         robot.drive(speed, turn)
-    robot.stop(Stop.COAST)
+    robot.stop(Stop.BRAKE)
