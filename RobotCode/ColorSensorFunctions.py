@@ -72,7 +72,7 @@ def stopOnWhiteS():
 def stopOnBlackF():
     
     # readAllValues()
-    print("Read configured color front value: " + str(frontColorSensorBlack))
+    #print("Read configured color front value: " + str(frontColorSensorBlack))
 
     while p3FSensor.reflection() > frontColorSensorBlack:
         #print(frontColorSensorBlack)
@@ -215,22 +215,15 @@ def backLineFollowerRun3(speed):
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
 
-def align1Run3():
+def turnSideRun3():
     # readAllValues()
-    print("Read configured color back value black: " + str(backColorSensorBlack))
-    print("Read configured color front value black: " + str(frontColorSensorBlack))
+    sideWhite = sideColorSensorWhite - 3
 
-    frontBlack = frontColorSensorBlack + 3
-    backBlack = backColorSensorBlack + 3
-
-    reflection = p3FSensor.reflection()
-    speed = 100
-    steering = 60
-
-    while reflection > frontBlack:
-        robot.turn(steering)
-        reflection = p3FSensor.reflection()
-        print("Reflection is: " + str(reflection))
+    sideReflection = p2SSensor.reflection()
+    while sideReflection < sideWhite:
+        sideReflection = p2SSensor.reflection()
+        robot.turn(-10)
+    robot.stop(Stop.BRAKE)
 
 
 
