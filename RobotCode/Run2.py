@@ -7,15 +7,15 @@ from TurnGradualGyro import *
 def Run2():
     gradualGyroBackward(200, 100)
     turnGradualGyro(10)
-    gradualGyroBackward(130,60)
+    gradualGyroBackward(120,60)
     turnGradualGyro(-15)
     turnGradualGyro(15)
     robot.stop(Stop.COAST)
-    gradualGyroBackward(120, 20)
+    gradualGyroBackward(130, 20)
     gradualGyroForward(150, 100)
-    robot.turn(-150)
+    turnGradualGyro(90)
     gradualGyroBackward(500, 100)
-    robot.turn(100)
+    
 
 
 Run2()

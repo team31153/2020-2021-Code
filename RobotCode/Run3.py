@@ -5,6 +5,7 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 from Run3Pt2 import run3Pt2
+from Run3Pt3 import run3Pt3
 
 readAllValues()
 p4GSensor.reset_angle(0)
@@ -34,6 +35,10 @@ def Run3():
     bMotor.run_angle(1000, -5700)
     bMotor.run_angle(1000, 5700)
     bMotor.run_angle(1000, -5700)
+
+    stopOnBlackF()
+    run3Pt3()
+
 
 
 Run3()
