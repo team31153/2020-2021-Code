@@ -339,3 +339,60 @@ def sideLineFollowerRun3(speed):
         robot.drive(Speed, turn_rate)
         # print("Read configured color front value: " + str(frontColorSensorBlack))
     robot.stop(Stop.BRAKE)
+    
+def stopOnBlackFRun2():
+    
+    # readAllValues()
+    #print("Read configured color front value: " + str(frontColorSensorBlack))
+    frontBlack = frontColorSensorBlack + 3
+    reflection = p3FSensor.reflection()
+
+    while reflection > frontBlack:
+        #print(frontColorSensorBlack)
+        reflection = p3FSensor.reflection()
+        robot.drive(-100,0)
+robot.stop(Stop.BRAKE)
+def stopOnBlackSRun2():
+
+    # readAllValues()
+    print("Read configured color side value: " + str(sideColorSensorBlack))
+    sideBlack = sideColorSensorBlack + 3
+    reflection = p2SSensor.reflection
+    while reflection > sideBlack:
+        print(sideColorSensorBlack)
+        robot.drive(-100,0)
+robot.stop(Stop.BRAKE)
+
+def sideLineFollowerRun2(desiredDistance):
+
+    # readAllValues()
+    print("Read configured color side value white: " + str(sideColorSensorWhite))
+    print("Read configured color side value black: " + str(sideColorSensorBlack))
+
+
+    threshold = (sideColorSensorWhite + sideColorSensorBlack) / 2
+
+    # Set the gain of the proportional line controller. This means that for every
+    # percentage point of light deviating from the threshold, we set the turn
+    # rate of the drivebase to 1.2 degrees per second.
+
+    # For example, if the light value deviates from the threshold by 10, the robot
+    # steers at 10*1.2 = 12 degrees per second.
+    PROPORTIONAL_GAIN = 1.5
+
+    # Start following the line endlessly.
+
+    while p3FSensor.reflection() > frontColorSensorBlack:
+
+        # Calculate the deviation from the threshold.
+        deviation = p2SSensor.reflection() - threshold
+        
+        # Calculate the turn rate.
+        turn_rate = PROPORTIONAL_GAIN * deviation
+
+        print("Color sensor reflection is " + str(p2SSensor.reflection()))
+        print("Turn rate is: " + str(turn_rate))
+        # Set the drive base speed and turn rate.
+        robot.drive(speed, turn_rate)
+        print("Read configured color front value: " + str(frontColorSensorBlack))
+    robot.stop()
