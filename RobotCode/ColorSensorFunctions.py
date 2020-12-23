@@ -75,19 +75,26 @@ def stopOnBlackF():
     
     # readAllValues()
     #print("Read configured color front value: " + str(frontColorSensorBlack))
+    frontBlack = frontColorSensorBlack + 3
+    reflection = p3FSensor.reflection()
 
-    while p3FSensor.reflection() > frontColorSensorBlack:
+    while reflection > frontBlack:
         #print(frontColorSensorBlack)
+        reflection = p3FSensor.reflection()
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
 def stopOnBlackB():
 
     # readAllValues()
-    print("Read configured color back value: " + str(backColorSensorBlack))
+    # print("Read configured color back value: " + str(backColorSensorBlack))
 
-    while p1BSensor.reflection() > backColorSensorBlack:
-        print(backColorSensorBlack)
+    backBlack = backColorSensorBlack + 3
+    reflection = p1BSensor.reflection()
+
+    while reflection > backBlack:
+        # print(backColorSensorBlack)
+        reflection = p1BSensor.reflection()
         robot.drive(-100,0)
     robot.stop(Stop.BRAKE)
 
