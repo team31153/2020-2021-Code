@@ -53,9 +53,11 @@ def stopOnWhiteBForward():
 
     # readAllValues()
     print("Read configured color back value: " + str(backColorSensorWhite))
-
-    while p1BSensor.reflection() < backColorSensorWhite:
-        print(backColorSensorWhite)
+    butt = p1BSensor.reflection()
+    crack = backColorSensorWhite - 20
+    while butt < crack:
+        butt = p1BSensor.reflection()
+        print(str(backColorSensorWhite) + " " + str(butt))
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
