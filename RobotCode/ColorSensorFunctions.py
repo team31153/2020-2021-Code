@@ -363,7 +363,7 @@ def stopOnBlackSRun2():
         robot.drive(-100,0)
 robot.stop(Stop.BRAKE)
 
-def sideLineFollowerRun2(desiredDistance):
+def sideLineFollowerRun2(speed):
 
     # readAllValues()
     print("Read configured color side value white: " + str(sideColorSensorWhite))
@@ -371,6 +371,9 @@ def sideLineFollowerRun2(desiredDistance):
 
 
     threshold = (sideColorSensorWhite + sideColorSensorBlack) / 2
+    
+    reflection = p1BSensor.reflection()
+    frontBlack = frontColorSensorBlack + 2
 
     # Set the gain of the proportional line controller. This means that for every
     # percentage point of light deviating from the threshold, we set the turn
@@ -378,11 +381,14 @@ def sideLineFollowerRun2(desiredDistance):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = 1.5
+    PROPORTIONAL_GAIN = -1.5
+    speed = speed * -1
 
     # Start following the line endlessly.
 
-    while p3FSensor.reflection() > frontColorSensorBlack:
+    while reflection > frontBlack:
+        
+        reflection = p1BSensor.reflection()
 
         # Calculate the deviation from the threshold.
         deviation = p2SSensor.reflection() - threshold
