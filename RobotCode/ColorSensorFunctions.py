@@ -52,12 +52,13 @@ def stopOnWhiteB():
 def stopOnWhiteBForward():
 
     # readAllValues()
+    # I HAD TO CHANGE THIS AARAN AND FELIX SCREW YOU
     print("Read configured color back value: " + str(backColorSensorWhite))
-    butt = p1BSensor.reflection()
-    crack = backColorSensorWhite - 20
-    while butt < crack:
-        butt = p1BSensor.reflection()
-        print(str(backColorSensorWhite) + " " + str(butt))
+    reflection = p1BSensor.reflection()
+    backWhite = backColorSensorWhite - 20
+    while reflection < backWhite:
+        reflection = p1BSensor.reflection()
+        print(str(backColorSensorWhite) + " " + str(reflection))
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
@@ -214,6 +215,38 @@ def backLineFollowerRun3(speed):
     while reflection > sideBlack:
         
         reflection = p2SSensor.reflection()
+        # print(reflection)
+        # Calculate the deviation from the threshold.
+        deviation = p1BSensor.reflection() - threshold
+        
+        # Calculate the turn rate.
+        turn_rate = PROPORTIONAL_GAIN * deviation
+
+        # Set the drive base speed and turn rate.
+        robot.drive(speed, turn_rate)
+
+def twoBackLineFollowerRun3(speed):
+    threshold = (backColorSensorWhite + backColorSensorBlack) / 2
+
+    # Set the drive speed at 100 millimeters per second.
+
+    reflection = p2SSensor.reflection()
+    sideWhite = sideColorSensorWhite - 2
+
+
+    # Set the gain of the proportional line controller. This means that for every
+    # percentage point of light deviating from the threshold, we set the turn
+    # rate of the drivebase to 1.2 degrees per second.
+
+    # For example, if the light value deviates from the threshold by 10, the robot
+    # steers at 10*1.2 = 12 degrees per second.
+    PROPORTIONAL_GAIN = -1.2
+
+    # Start following the line endlessly.
+
+    while reflection < sideWhite:
+        
+        reflection = p2SSensor.reflection()
         print(reflection)
         # Calculate the deviation from the threshold.
         deviation = p1BSensor.reflection() - threshold
@@ -231,7 +264,7 @@ def turnSideRun3():
     sideReflection = p2SSensor.reflection()
     while sideReflection < sideWhite:
         sideReflection = p2SSensor.reflection()
-        robot.turn(-10)
+        robot.drive(60, 50)
     robot.stop(Stop.BRAKE)
 
 

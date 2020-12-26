@@ -37,7 +37,11 @@ def Run3():
     bMotor.run_angle(1000, -5700)
 
     stopOnBlackF()
-    run3Pt3()
+
+    p4GSensor.reset_angle(0)
+    turnSideRun3()
+    backLineFollowerRun3(-50)
+    # run3Pt3()
 
 
 
