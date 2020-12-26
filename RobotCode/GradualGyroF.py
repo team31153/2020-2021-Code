@@ -5,6 +5,8 @@ from Initialize import *
 # Click "Open user guide" on the EV3 extension tab for more information.
 
 def gradualGyroForward(desiredDistance, speed):
+
+    p4GSensor.reset_angle(0)
     
     initialGyro = 0
     rampPower = 0

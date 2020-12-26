@@ -9,7 +9,8 @@ readAllValues()
 
 def run3Pt3():
     p4GSensor.reset_angle(0)
-    turnGradualGyro(90)
+    turnSideRun3()
+    backLineFollowerRun3(-50)
     #turnSideRun3()
 
 # run3Pt3()
