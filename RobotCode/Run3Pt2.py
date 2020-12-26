@@ -10,7 +10,7 @@ readAllValues()
 def run3Pt2():
     turnGradualGyro(30)
     gradualGyroForward(30, 40)
-    turnGradualGyro(-36)
+    turnGradualGyro(-33)
     gradualGyroBackward(680, 100)
 
 #Run3Pt2()

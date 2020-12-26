@@ -29,12 +29,11 @@ def Run3():
     aMotor.run_angle(10000, -3000)
 
     run3Pt2()
-    bMotor.run_angle(1000, 5700)
-    bMotor.run_angle(1000, -5700)
-    bMotor.run_angle(1000, 5700)
-    bMotor.run_angle(1000, -5700)
-    bMotor.run_angle(1000, 5700)
-    bMotor.run_angle(1000, -5700)
+    bMotor.run_angle(1000, 2800)
+    for i in range(3):
+
+        robot.straight(5)
+        robot.straight(-5)
 
     stopOnBlackF()
 
