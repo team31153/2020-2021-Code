@@ -77,11 +77,13 @@ def stopOnBlackF():
     # readAllValues()
     #print("Read configured color front value: " + str(frontColorSensorBlack))
     frontBlack = frontColorSensorBlack + 3
+    print("Front black is: " + str(frontBlack))
     reflection = p3FSensor.reflection()
 
     while reflection > frontBlack:
         #print(frontColorSensorBlack)
         reflection = p3FSensor.reflection()
+        print("Reflection is: " + str(reflection))
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 

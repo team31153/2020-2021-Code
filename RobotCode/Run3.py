@@ -6,6 +6,7 @@ from GradualGyroB import *
 from ColorSensorFunctions import *
 from Run3Pt2 import run3Pt2
 from Run3Pt3 import run3Pt3
+from threading import Thread
 
 readAllValues()
 p4GSensor.reset_angle(0)
@@ -25,21 +26,18 @@ def Run3():
     gradualGyroBackward(25, 100)
 
     aMotor.run_angle(10000, -4500)
-    gradualGyroForward(65, 20)
+    t1 = Thread(target=gradualGyroForward, args=([65, 40]))
+    t1.start()
     aMotor.run_angle(10000, -3000)
 
     run3Pt2()
     bMotor.run_angle(1000, 2800)
-    for i in range(3):
 
-        robot.straight(5)
-        robot.straight(-5)
-
+    readAllValues()
     stopOnBlackF()
-
     p4GSensor.reset_angle(0)
-    turnSideRun3()
-    backLineFollowerRun3(-50)
+    turnGradualGyro(60)
+    gradualGyroBackward(30, 30)
     # run3Pt3()
 
 
