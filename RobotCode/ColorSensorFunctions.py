@@ -72,6 +72,16 @@ def stopOnWhiteS():
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
+def stopOnWhiteSRun2():
+
+    # readAllValues()
+    print("Read configured color side value: " + str(sideColorSensorWhite))
+
+    while p2SSensor.reflection() < sideColorSensorWhite:
+        print(sideColorSensorWhite)
+        robot.drive(-100,0)
+    robot.stop(Stop.BRAKE)
+
 def stopOnBlackF():
     
     # readAllValues()
@@ -404,11 +414,12 @@ def sideLineFollowerRun2(speed):
     print("Read configured color side value white: " + str(sideColorSensorWhite))
     print("Read configured color side value black: " + str(sideColorSensorBlack))
 
+    
 
     threshold = (sideColorSensorWhite + sideColorSensorBlack) / 2
-    
-    reflection = p1BSensor.reflection()
-    frontBlack = frontColorSensorBlack + 2
+
+    # Set the drive speed at 100 millimeters per second.
+    speed = -100
 
     # Set the gain of the proportional line controller. This means that for every
     # percentage point of light deviating from the threshold, we set the turn
@@ -416,14 +427,11 @@ def sideLineFollowerRun2(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -1.5
-    speed = speed * -1
+    PROPORTIONAL_GAIN = -1.2
 
     # Start following the line endlessly.
 
-    while reflection > frontBlack:
-        
-        reflection = p1BSensor.reflection()
+    while True:
 
         # Calculate the deviation from the threshold.
         deviation = p2SSensor.reflection() - threshold
@@ -435,5 +443,11 @@ def sideLineFollowerRun2(speed):
         print("Turn rate is: " + str(turn_rate))
         # Set the drive base speed and turn rate.
         robot.drive(speed, turn_rate)
-        print("Read configured color front value: " + str(frontColorSensorBlack))
-    robot.stop()
+    robot.stop(Stop.BRAKE)
+
+def sideLineFollowerRun2distance(desiredDistance):
+    distanceTraveled = robot.distance()
+    
+    while distanceTraveled < desiredDistance:
+        sideLineFollowerRun2()
+    robot.stop(Stop.BRAKE)
