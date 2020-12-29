@@ -288,7 +288,7 @@ def frontLineFollowerStopWithSide(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -2.5
+    PROPORTIONAL_GAIN = -3
     while p2SSensor.reflection() > sideColorSensorBlack:    
         
     
