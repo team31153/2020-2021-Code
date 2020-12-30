@@ -11,6 +11,6 @@ def run3Pt2():
     turnGradualGyro(30)
     gradualGyroForward(30, 40)
     turnGradualGyro(-33)
-    gradualGyroBackward(680, 100)
+    gradualGyroBackward(680, 200)
 
 #Run3Pt2()

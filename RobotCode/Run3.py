@@ -14,10 +14,10 @@ p4GSensor.reset_angle(0)
 def Run3():
 
     # Get out of base to go on line
-    gradualGyroBackward(620, 100)
+    gradualGyroBackward(650, 150)
     # Line follows
     # print("before line follower")
-    backLineFollowerRun3(-50)
+    backLineFollowerRun3(-60)
     # print("after line follower")
     # Turns
     #robot.turn(106)
@@ -25,19 +25,21 @@ def Run3():
     #sideLineFollowerRun3(50)
     gradualGyroBackward(25, 100)
 
-    aMotor.run_angle(10000, -4500)
+    aMotor.run_angle(1560, -4500)
     t1 = Thread(target=gradualGyroForward, args=([65, 40]))
     t1.start()
-    aMotor.run_angle(10000, -3000)
+    aMotor.run_angle(1560, -3000)
 
     run3Pt2()
-    bMotor.run_angle(1000, 2800)
+    bMotor.run_angle(1560, 2800)
 
     readAllValues()
     stopOnBlackF()
     p4GSensor.reset_angle(0)
     turnGradualGyro(60)
-    gradualGyroBackward(30, 30)
+    gradualGyroBackward(50, 50)
+    turnGradualGyro(40)
+    gradualGyroBackward(30, 20)
     # run3Pt3()
 
 
