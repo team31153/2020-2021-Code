@@ -86,7 +86,7 @@ def stopOnBlackF():
     
     # readAllValues()
     #print("Read configured color front value: " + str(frontColorSensorBlack))
-    frontBlack = frontColorSensorBlack + 3
+    frontBlack = frontColorSensorBlack + 5
     print("Front black is: " + str(frontBlack))
     reflection = p3FSensor.reflection()
 
