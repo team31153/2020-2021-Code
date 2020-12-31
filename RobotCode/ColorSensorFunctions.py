@@ -419,7 +419,7 @@ def sideLineFollowerRun2(speed):
     threshold = (sideColorSensorWhite + sideColorSensorBlack) / 2
 
     # Set the drive speed at 100 millimeters per second.
-    speed = -100
+    speed = speed * -1
 
     # Set the gain of the proportional line controller. This means that for every
     # percentage point of light deviating from the threshold, we set the turn
@@ -427,11 +427,11 @@ def sideLineFollowerRun2(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -1.2
+    PROPORTIONAL_GAIN = 0.9
 
     # Start following the line endlessly.
 
-    while True:
+    while p1BSensor.reflection() > backColorSensorBlack:
 
         # Calculate the deviation from the threshold.
         deviation = p2SSensor.reflection() - threshold
