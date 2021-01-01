@@ -114,10 +114,11 @@ def stopOnBlackB():
 def stopOnBlackS():
 
     # readAllValues()
-    print("Read configured color side value: " + str(sideColorSensorBlack))
+    sideBlack = sideColorSensorBlack + 5
+    reflection = p2SSensor.reflection()
 
-    while p2SSensor.reflection() > sideColorSensorBlack:
-        print(sideColorSensorBlack)
+    while reflection > sideBlack:
+        reflection = p2SSensor.reflection()
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
@@ -271,12 +272,12 @@ def twoBackLineFollowerRun3(speed):
 
 def turnSideRun3():
     # readAllValues()
-    sideWhite = sideColorSensorWhite - 3
+    frontBlack = frontColorSensorBlack + 3
 
-    sideReflection = p2SSensor.reflection()
+    frontReflection = p3FSensor.reflection()
     while sideReflection < sideWhite:
         sideReflection = p2SSensor.reflection()
-        robot.drive(60, 50)
+        robot.drive(60, 80)
     robot.stop(Stop.BRAKE)
 
 
