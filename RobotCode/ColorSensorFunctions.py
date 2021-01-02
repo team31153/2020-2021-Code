@@ -55,10 +55,11 @@ def stopOnWhiteBForward():
     # I HAD TO CHANGE THIS AARAN AND FELIX SCREW YOU
     print("Read configured color back value: " + str(backColorSensorWhite))
     reflection = p1BSensor.reflection()
-    backWhite = backColorSensorWhite - 20
+    backWhite = backColorSensorWhite - 5
+    print("stopOnWhiteBForward :" + str(backWhite) + " " + str(reflection))
     while reflection < backWhite:
         reflection = p1BSensor.reflection()
-        print(str(backColorSensorWhite) + " " + str(reflection))
+        print("stopOnWhiteBForward :" + str(backWhite) + " " + str(reflection))
         robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
@@ -109,6 +110,21 @@ def stopOnBlackB():
         # print(backColorSensorBlack)
         reflection = p1BSensor.reflection()
         robot.drive(-100,0)
+    robot.stop(Stop.BRAKE)
+
+def stopOnBlackBForward():
+
+    # readAllValues()
+    # print("Read configured color back value: " + str(backColorSensorBlack))
+
+    backBlack = backColorSensorBlack + 6
+    reflection = p1BSensor.reflection()
+    print("stopOnBlackBForward :" + str(backBlack) + " " + str(reflection))
+    while reflection > backBlack:
+        # print(backColorSensorBlack)
+        reflection = p1BSensor.reflection()
+        print("stopOnBlackBForward :" + str(backBlack) + " " + str(reflection))
+        robot.drive(100,0)
     robot.stop(Stop.BRAKE)
 
 def stopOnBlackS():
@@ -329,7 +345,7 @@ def sideLineFollowerRun1(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = 1.5
+    PROPORTIONAL_GAIN = 2.3
 
     # Start following the line endlessly.
 
