@@ -11,7 +11,6 @@ readAllValues()
 
 # Code Here.
 def Run1():
-    t1 = Thread(target=aMotor.run_angle, args=([8000, 2700]))
-    t1.start()
-    bMotor.run_angle(14000, -6000)
+    robot.turn(300)
+    gyroForward(100,200)
 Run1()
