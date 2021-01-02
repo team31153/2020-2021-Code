@@ -14,11 +14,11 @@ p4GSensor.reset_angle(0)
 def Run3():
 
     # Get out of base to go on line
-    gradualGyroBackward(650, 100)
+    gradualGyroBackward(650, 300)
     # Line follows
     # print("before line follower")
     backLineFollowerRun3(-50)
-    gradualGyroBackward(10, 30)
+    gradualGyroBackward(20, 30)
     # print("after line follower")
     # Turns
     #robot.turn(106)
@@ -41,18 +41,22 @@ def Run3():
     p4GSensor.reset_angle(0)
     turnGradualGyro(40)
     gradualGyroForward(20, 30)
-    turnGradualGyro(30)
-    gradualGyroBackward(40, 30)
+    turnGradualGyro(25)
+    gradualGyroBackward(60, 30)
+    gradualGyroForward(10, 30)
     turnGradualGyro(-35)
+    turnGradualGyro(100)
+    gradualGyroForward(400, 200)
     # gradualGyroBackward(25)
     # turnGradualGyro(-30)
     # run3Pt3()
 
     def dance():
-        for i in range(12):
-            robot.forward(10)
-            robot.backward(10)
-            robot.right(30)
+        while True:
+            robot.straight(10)
+            robot.straight(-10)
+            robot.turn(30)
+    dance()
 
 
 
