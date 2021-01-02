@@ -237,7 +237,7 @@ def backLineFollowerRun3(speed):
 
     # For example, if the light value deviates from the threshold by 10, the robot
     # steers at 10*1.2 = 12 degrees per second.
-    PROPORTIONAL_GAIN = -1.2
+    PROPORTIONAL_GAIN = -1.25
 
     # Start following the line endlessly.
 

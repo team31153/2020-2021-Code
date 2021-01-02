@@ -8,10 +8,9 @@ from ColorSensorFunctions import *
 readAllValues()
 
 def run3Pt2():
-    turnGradualGyro(30)
     # gradualGyroForward(30, 40)
     # turnGradualGyro(-31)
-    robot.straight(50)
+    robot.straight(350)
     gradualGyroBackward(710, 200)
 
 
