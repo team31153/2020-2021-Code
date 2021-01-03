@@ -52,4 +52,4 @@ def Run2():
     robot.turn(38)
     robot.straight(-1600)
 
-Run2()
+#Run2()
