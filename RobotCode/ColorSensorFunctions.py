@@ -52,7 +52,6 @@ def stopOnWhiteB():
 def stopOnWhiteBForward():
 
     # readAllValues()
-    # I HAD TO CHANGE THIS AARAN AND FELIX SCREW YOU
     print("Read configured color back value: " + str(backColorSensorWhite))
     reflection = p1BSensor.reflection()
     backWhite = backColorSensorWhite - 5

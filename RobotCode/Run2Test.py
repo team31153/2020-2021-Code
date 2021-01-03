@@ -14,6 +14,6 @@ readAllValues()
 
 # Code Here.
 def Run2():
-    robot.turn(300)
-    gyroForward(100,200)
+    robot.straight(200)
+    gradualGyroForward(200,26)
 Run2()
