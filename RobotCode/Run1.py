@@ -8,7 +8,7 @@ from TurnGradualGyro import *
 # ORIGINALLY RUN 2 
 # RYAN CHANGED IT TO RUN 1 ON 1/3/20
 
-readAllValues()
+# readAllValues()
 def Run1():
     gradualGyroBackward(200, 100)
     turnGradualGyro(12)

@@ -5,7 +5,7 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
-readAllValues()
+# readAllValues()
 
 def run3Pt3():
     p4GSensor.reset_angle(0)

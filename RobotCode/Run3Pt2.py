@@ -5,7 +5,7 @@ from GradualGyroF import *
 from GradualGyroB import *
 from ColorSensorFunctions import *
 
-readAllValues()
+# readAllValues()
 
 def run3Pt2():
     # gradualGyroForward(30, 40)
