@@ -8,8 +8,8 @@ from Run3Pt2 import run3Pt2
 from Run3Pt3 import run3Pt3
 from threading import Thread
 
-readAllValues()
-p4GSensor.reset_angle(0)
+# readAllValues()
+# p4GSensor.reset_angle(0)
 
 def Run3():
 

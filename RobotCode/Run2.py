@@ -7,7 +7,7 @@ from ColorSensorFunctions import *
 from GyroB import *
 from GyroF import *
 
-readAllValues()
+# readAllValues()
 
 # Code Here.
 def Run2():
