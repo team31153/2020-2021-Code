@@ -7,10 +7,13 @@ from ColorSensorFunctions import *
 from GyroB import *
 from GyroF import *
 
+# ORIGINALLY Run1Pt2
+# RYAN CHANGED IT TO Run2Pt2 ON 1/3/20
+
 readAllValues()
 
 # Code Here.
-def Run1():
+def Run2():
     robot.straight(-90)
     robot.turn(110)
     robot.straight(90)
@@ -28,4 +31,4 @@ def Run1():
     robot.turn(-90)
     robot.straight(60)
     frontLineFollowerStopWithSide(50)
-Run1()
+Run2()
