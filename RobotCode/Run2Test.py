@@ -7,10 +7,13 @@ from ColorSensorFunctions import *
 from GyroB import *
 from GyroF import *
 
+# # ORIGINALLY Run1Test
+# RYAN CHANGED IT TO Run2Test ON 1/3/20
+
 readAllValues()
 
 # Code Here.
-def Run1():
+def Run2():
     robot.turn(300)
     gyroForward(100,200)
-Run1()
+Run2()
