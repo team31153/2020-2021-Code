@@ -7,7 +7,7 @@ from ColorSensorFunctions import *
 from GyroB import *
 from GyroF import *
 
-# readAllValues()
+readAllValues()
 
 # Code Here.
 def Run2():
@@ -27,19 +27,21 @@ def Run2():
     stopOnWhiteBForward()
     stopOnBlackBForward()
     aMotor.run_angle(7000, 2800)
-    gradualGyroForward(260, 75)
+    gradualGyroForward(280, 75)
     gradualGyroBackward(180, 80)
-    aMotor.run_angle(8000, -1400)
+    aMotor.run_angle(7000, -2800)
+    # align for mission three, treadmill
     robot.straight(-140)
     robot.turn(-90)
-    robot.straight(45)
+    robot.straight(40)
+    robot.turn(45)
     frontLineFollowerStopWithSide(80)
     gradualGyroBackward(80, 200)
     turnGradualGyro(-40)
     gradualGyroForward(119, 200)
     turnGradualGyro(37)
     robot.straight(220)
-    t1 = Thread(target=aMotor.run_angle, args=([8000, 26000]))
+    t1 = Thread(target=aMotor.run_angle, args=([8000, 14000]))
     t1.start()
     bMotor.run_angle(8000, -7000)
     robot.straight(-70)
@@ -50,4 +52,4 @@ def Run2():
     robot.turn(38)
     robot.straight(-1600)
 
-# Run2()
+Run2()

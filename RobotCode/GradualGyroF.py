@@ -28,7 +28,7 @@ def gradualGyroForward(desiredDistance, speed):
 
         # This is the Gyro Part of our code.
         ang = p4GSensor.angle()
-
+    
         # If the angle that the gyro is sensing is NOT equal to the initial gyro (0)
         #if ang != initialGyro:
         # Turn that angle to GET to the value of the initial gyro.
