@@ -31,6 +31,10 @@ def Run1():
     #sideLineFollowerRun2(50)
     gradualGyroBackward(265, 200)
     gradualGyroForward(50, 100)
+    turnGradualGyro(-38)
+    aMotor.run_angle(1000, 5000)
+    gradualGyroBackward(50, 60)
+    aMotor.run_angle(1000, -9000)
 
 
-# Run1()
+#Run1()
