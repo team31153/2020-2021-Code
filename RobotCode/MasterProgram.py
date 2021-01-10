@@ -2,6 +2,8 @@
 from Run1 import *
 from Run2 import *
 from Run3 import *
+from Run3MK2 import *
+from Run3MK3 import *
 
 # Write your program here.
 #Calls functions imported from programs
@@ -20,6 +22,10 @@ while True:
     for oneButton in listOfButtons:
         print(oneButton)
         if oneButton == Button.CENTER: 
+            ev3.light.on(Color.RED)
+            ev3.screen.clear()
+            ev3.screen.draw_text(0, 50, "RUN 3 MK3")
+            Run3MK3()
             waiting()
 
         if oneButton == Button.UP:
@@ -45,4 +51,8 @@ while True:
             waiting()
 
         if oneButton == Button.LEFT:
+            ev3.light.on(Color.RED)
+            ev3.screen.clear()
+            ev3.screen.draw_text(0, 50, "RUN 3 MK2")
+            Run3MK2()
             waiting()
