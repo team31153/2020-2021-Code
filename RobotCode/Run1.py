@@ -29,7 +29,7 @@ def Run1():
     gradualGyroForward(110, 200)
     turnGradualGyro(-70)
     #sideLineFollowerRun2(50)
-    t1 = Thread(target=gradualGyroBackward, args=([240, 200]))
+    t1 = Thread(target=gradualGyroBackward, args=([230, 200]))
     t1.start()
     aMotor.run_angle(1000, 5000)
     gradualGyroForward(50, 100)
