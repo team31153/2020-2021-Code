@@ -227,7 +227,7 @@ def backLineFollowerRun3(speed):
     # Set the drive speed at 100 millimeters per second.
 
     reflection = p2SSensor.reflection()
-    sideBlack = sideColorSensorBlack + 2
+    sideBlack = sideColorSensorBlack + 0
 
 
     # Set the gain of the proportional line controller. This means that for every
