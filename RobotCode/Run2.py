@@ -28,18 +28,17 @@ def Run2():
     stopOnBlackBForward() #align with tire flip
     aMotor.run_angle(7000, 2800)
     gradualGyroForward(260, 100)
-    gradualGyroBackward(80, 200) #180 to 140
+    gradualGyroBackward(100, 200) #180 to 140
     aMotor.run_angle(7000, -1300) #Finished tire flip
     # begin align for mission three and four, treadmill and rowing machine
-    robot.straight(-130) #120 to 100
+    robot.straight(-140) 
     robot.turn(-90)
-    robot.straight(75)
-    robot.turn(85)
-    frontLineFollowerStopWithSide(60) #aligning with end of line closest to treadmill
+    robot.straight(60)
+    frontLineFollowerStopWithSide(53) #aligning with end of line closest to treadmill
     gradualGyroBackward(60, 200)
     turnGradualGyro(-40)
     gradualGyroForward(121, 200)
-    turnGradualGyro(37)
+    turnGradualGyro(38)
     robot.straight(210) # Finished alignment
     t1 = Thread(target=aMotor.run_angle, args=([8000, 1300])) # Running both medium motors in parallel to save time
     t1.start()
@@ -49,7 +48,7 @@ def Run2():
     robot.straight(-110) #Pulled rowing machine's tire into small circle
     wait(30)
     aMotor.run_angle(8000, -2200)
-    robot.turn(60)
+    robot.turn(55)
     t2 = Thread(target=aMotor.run_angle, args=([8000, -600])) # Lifting up medium motor while heading back to base
     t2.start()
     gradualGyroBackward(1600, 700)
