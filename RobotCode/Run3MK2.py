@@ -22,7 +22,7 @@ def Run3MK2():
     # print("after line follower")
     # Turns
     #robot.turn(106)
-    turnGradualGyro(-84)
+    turnGradualGyro(-82)
     #sideLineFollowerRun3(50)
     gradualGyroBackward(30, 100)
 
