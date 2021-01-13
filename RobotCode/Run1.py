@@ -12,7 +12,7 @@ from TurnGradualGyro import *
 def Run1():
     gradualGyroBackward(200, 150)
     turnGradualGyro(12)
-    gradualGyroBackward(112,90)
+    gradualGyroBackward(115,90)
     turnGradualGyro(-12)
     turnGradualGyro(12)
     robot.stop(Stop.COAST)
@@ -26,16 +26,13 @@ def Run1():
     #gradualGyroForward(110, 200)
     turnGradualGyro(-66)
     #sideLineFollowerRun2(50)
-    t1 = Thread(target=gradualGyroBackward, args=([255, 200]))
-    t1.start()
-    aMotor.run_angle(1000, 4600)
-    gradualGyroForward(50, 100)
-    turnGradualGyro(-29)
-    gradualGyroBackward(65, 60)
-    aMotor.run_angle(1000, -9000)
-    gradualGyroForward(60, 90)
-    turnGradualGyro(-32)
-    gradualGyroBackward(650, 300)
+    gradualGyroBackward(250, 300)
+    gradualGyroBackward(50, 100)
+    gradualGyroForward(130, 100)
+    turnGradualGyro(-53)
+    gradualGyroBackward(680, 275)
+    turnGradualGyro(-90)
+    gradualGyroBackward(150, 200)
 
 
 
