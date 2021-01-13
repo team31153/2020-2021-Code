@@ -48,5 +48,4 @@ def Run3MK2():
         while True:
             robot.straight(10)
             robot.straight(-10)
-            robot.turn(30)
     dance()
