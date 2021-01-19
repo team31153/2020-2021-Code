@@ -35,7 +35,10 @@ def Run3():
 
 
     run3Pt2()
+    gradualGyroForward(7, 20)
+    turnGradualGyro(7)
     bMotor.run_angle(1560, 2800)
+    turnGradualGyro(-7)
 
     readAllValues()
     stopOnBlackF()
@@ -45,8 +48,8 @@ def Run3():
     turnGradualGyro(25)
     gradualGyroBackward(60, 30)
     gradualGyroForward(10, 30)
-    turnGradualGyro(-24)
-    turnGradualGyro(100)
+    turnGradualGyro(-20)
+    turnGradualGyro(90)
     gradualGyroForward(400, 200)
     # gradualGyroBackward(25)
     # turnGradualGyro(-30)
