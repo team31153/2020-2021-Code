@@ -30,10 +30,10 @@ def Run1():
     gradualGyroBackward(250, 300)
     gradualGyroBackward(60, 100)
     gradualGyroForward(130, 100)
-    turnGradualGyro(-53)
+    turnGradualGyro(-54)
     gradualGyroBackward(680, 275)
-    turnGradualGyro(-90)
-    gradualGyroBackward(180, 250)
+    robot.turn(180)
+    gradualGyroBackward(300, 250)
 
 
 
