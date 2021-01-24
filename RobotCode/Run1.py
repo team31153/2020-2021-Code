@@ -28,7 +28,7 @@ def Run1():
     turnGradualGyro(-66)
     #sideLineFollowerRun2(50)
     gradualGyroBackward(250, 300)
-    gradualGyroBackward(60, 100)
+    gradualGyroBackward(70, 100)
     gradualGyroForward(130, 100)
     turnGradualGyro(-54)
     gradualGyroBackward(680, 275)
