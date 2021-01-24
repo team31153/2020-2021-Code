@@ -18,18 +18,18 @@ def Run3MK2():
     # Line follows
     # print("before line follower")
     backLineFollowerRun3(-50)
-    gradualGyroBackward(20, 30)
+    gradualGyroBackward(30, 30)
     # print("after line follower")
     # Turns
     #robot.turn(106)
-    turnGradualGyro(-81)
+    turnGradualGyro(-82)
     #sideLineFollowerRun3(50)
     gradualGyroBackward(45, 100)
 
     aMotor.run_angle(1560, -4500)
     t1 = Thread(target=gradualGyroForward, args=([65, 40]))
     t1.start()
-    turnGradualGyro(-5)
+    turnGradualGyro(-4)
     aMotor.run_angle(1560, -3000)
     # stopOnBlackS()
 
