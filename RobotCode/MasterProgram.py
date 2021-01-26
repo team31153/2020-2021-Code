@@ -4,6 +4,7 @@ from Run2 import *
 from Run3 import *
 from Run3MK2 import *
 from Run3MK3 import *
+from Run3MK4 import *
 
 # Write your program here.
 #Calls functions imported from programs
@@ -46,7 +47,7 @@ while True:
             ev3.light.on(Color.RED)
             ev3.screen.clear()
             ev3.screen.draw_text(0, 50, "RUN 3")
-            Run3()
+            Run3MK4()
             ev3.light(None)
             waiting()
 
