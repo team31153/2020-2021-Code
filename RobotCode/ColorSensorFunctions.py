@@ -467,3 +467,16 @@ def sideLineFollowerRun2distance(desiredDistance):
     while distanceTraveled < desiredDistance:
         sideLineFollowerRun2()
     robot.stop(Stop.BRAKE)
+def stopOnBlackRun3():
+
+    # readAllValues()
+    # print("Read configured color back value: " + str(backColorSensorBlack))
+
+    frontBlack = frontColorSensorBlack + 3
+    reflection = p3FSensor.reflection()
+
+    while reflection > frontBlack:
+        # print(backColorSensorBlack)
+        reflection = p3FSensor.reflection()
+        robot.drive(-100,0)
+    robot.stop(Stop.BRAKE)
