@@ -13,12 +13,12 @@ readAllValues()
 def Run2():
     gradualGyroForward(570, 300)
     sideLineFollowerRun1(90) # Line following to just before step counter (line follow for accuracy)
-    gyroForward(60, 120)
-    gyroForward(30, 18)
-    gradualGyroForward(170, 87) # Step counter
-    gradualGyroBackward(110, 150) # Back away from step counter
+    gyroForward(62, 120)
+    gyroForward(35, 20)
+    gradualGyroForward(170, 93) # Step counter
+    gradualGyroBackward(125, 150) # Back away from step counter
     robot.turn(110)
-    gradualGyroForward(110, 160)
+    gradualGyroForward(140, 160)
     robot.turn(-80)
     frontLineFollowerStopWithSide(60) # line following to align
     robot.turn(103)
@@ -48,7 +48,7 @@ def Run2():
     robot.straight(-110) #Pulled rowing machine's tire into small circle
     wait(30)
     aMotor.run_angle(8000, -2200)
-    robot.turn(55)
+    robot.turn(45)
     t2 = Thread(target=aMotor.run_angle, args=([8000, -600])) # Lifting up medium motor while heading back to base
     t2.start()
     gradualGyroBackward(1600, 900)
