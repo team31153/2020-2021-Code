@@ -10,7 +10,7 @@ from TurnGradualGyro import *
 
 # readAllValues()
 def Run1():
-    gradualGyroBackward(200, 150)
+    gradualGyroBackward(230, 150)
     turnGradualGyro(12)
     gradualGyroBackward(105,90)
 
