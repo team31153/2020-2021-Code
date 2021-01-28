@@ -14,7 +14,7 @@ from threading import Thread
 def Run3MK5():
 
     # Get out of base to go on line
-    gradualGyroBackward(650, 300)
+    gradualGyroBackward(680, 300)
     # Line follows
     # print("before line follower")
     backLineFollowerRun3(-50)
@@ -32,8 +32,8 @@ def Run3MK5():
     aMotor.run_angle(1560, -4500)
     t1 = Thread(target=gradualGyroForward, args=([65, 40]))
     t1.start()
-    turnGradualGyro(-4)
     aMotor.run_angle(1560, -3000)
+    turnGradualGyro(-5)
     # stopOnBlackS()
 
 
